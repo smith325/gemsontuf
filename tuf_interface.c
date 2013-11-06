@@ -56,32 +56,37 @@ void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
     PyObject *config_obj;
     
     // Convert the handed strings into PyStrings to pass to the configure method
-    printf("Converting arguments to PyStrings. . .\n");
-    PyObject *tij  = PyString_FromString(tuf_intrp_json);
-    PyObject *prd  = PyString_FromString(p_repo_dir);
-    PyObject *pscd = PyString_FromString(p_ssl_cert_dir);
+    //printf("Converting arguments to PyStrings. . .\n");
+    //PyObject *tij  = PyString_FromString(tuf_intrp_json);
+    //PyObject *prd  = PyString_FromString(p_repo_dir);
+    //PyObject *pscd = PyString_FromString(p_ssl_cert_dir);
 
     // Set the Arguments Tuple
-    printf("Loading the arguments. . .\n");
-    PyTuple_SetItem(conf_args, 0, tij);
-    PyTuple_SetItem(conf_args, 1, prd);
-    PyTuple_SetItem(conf_args, 2, pscd);
+    //printf("Loading the arguments. . .\n");
+    //PyTuple_SetItem(conf_args, 0, tij);
+    //PyTuple_SetItem(conf_args, 1, prd);
+    //PyTuple_SetItem(conf_args, 2, pscd);
 
     //config_obj = PyObject_CallObject(conf_function, conf_args);
     printf("Calling tuf.interposition.configure. . .\n");
-    ptr = PyObject_CallObject(conf_function, conf_args);
+    /* Use of the following causes seg faults.  I was using this because a tutorial
+     * said to, but after looking through the API, I don't see why we can't just use
+     * PyObject_CallFunction.  I'm changing over to this format, but we may need to
+     * revisit this idea later, as we'll need flexibility in returned data types for
+     * the interplay between configure/deconfigure.*/
+    //ptr = PyObject_CallObject(conf_function, conf_args);
+    ptr = PyObject_CallFunction(conf_function, "sss", tuf_intrp_json, p_repo_dir, p_ssl_cert_dir);
 
     //Clean up
     printf("Cleaning up. . .\n");
-    Py_DECREF(tuf_intrp_mod);
-    Py_DECREF(tuf_dict);
-    Py_DECREF(conf_function);
-    Py_DECREF(conf_args);
+    Py_XDECREF(tuf_intrp_mod);
+    Py_XDECREF(tuf_dict);
+    Py_XDECREF(conf_function);
+    Py_XDECREF(conf_args);
     //Py_DECREF(conf_obj); // Figure out how to cleanly decrement this ref.  Think we need globals :S
-    Py_DECREF(tij);
-    Py_DECREF(prd);
-    Py_DECREF(pscd);
-    Py_Finalize();
+    //Py_XDECREF(tij);
+    //Py_XDECREF(prd);
+    //Py_XDECREF(pscd);
     printf("Done.\n");
     //return config_obj;
 }
