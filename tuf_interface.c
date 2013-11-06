@@ -30,8 +30,6 @@
 PyObject *ptr;
 
 
-
-
 /*
  * Method to call TUFs configure method.  This function takes the JSON interposition filename
  * as well as the parent repository directory and the parent ssl certificate directory, and
@@ -39,21 +37,73 @@ PyObject *ptr;
  */
 //PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
 void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
-    // Init the python env
+    /* Init the python env */
     Py_Initialize();
 
-    // Get a hold of the configure function
+    /* Get a hold of the configure function */
     printf("Loading the 'configure' method from the tuf.interposition library. . .\n");
-    PyObject *tuf_intrp_mod = PyImport_AddModule("tuf.interposition");
-    PyObject *tuf_dict      = PyModule_GetDict(tuf_intrp_mod);
-    PyObject *conf_function = PyDict_GetItemString(tuf_dict, "configure");
-    PyObject *conf_args     = PyTuple_New(3);
+
+    PyObject *name = PyString_FromString("tuf.interposition");
+    PyObject *module = PyImport_Import(name);
+    PyObject *dict;
+    PyObject *function;
+
+    /* Get the Modules Dictionary */
+    if(module != NULL){
+        dict = PyModule_GetDict(module);
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
+
+    /* Get the specific Function we're interested in. */
+    if(dict != NULL){
+        function = PyDict_GetItemString(dict, "configure");
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
     
+    /* Not used here as we used CallFunction as opposed to CallObject */
+    //PyObject *conf_args = PyTuple_New(3);
+
+    /* Check that the function was found, and is callable. */
+    printf("Calling tuf.interposition.configure. . .\n");
+    if(function != NULL && PyCallable_Check(function)){
+        ptr = PyObject_CallFunction(function, "sss", 
+                                    tuf_intrp_json, 
+                                    p_repo_dir, 
+                                    p_ssl_cert_dir); 
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
+    
+    /* Clean up the references used. */
+    printf("Cleaning up. . .\n");
+    Py_XDECREF(name);
+    Py_XDECREF(module);
+    Py_XDECREF(dict);
+    Py_XDECREF(function);
+
+    /* Terminate the python environment. */
+    Py_Finalize();
+    printf("Done.\n");
+
+
+    
+    /*
+     * Not sure any of the below code is needed.  Leaving for now just in case.
+     */
+
     // Note: Scoping issue here, we need to hand back a PyObject pointer
     // as we will use this pointer later for the deconfigure function call...
     // So how do we get the 'config' object out of this scope, but also
     // make this function externally call-able
-    PyObject *config_obj;
+    //PyObject *config_obj;
     
     // Convert the handed strings into PyStrings to pass to the configure method
     //printf("Converting arguments to PyStrings. . .\n");
@@ -68,26 +118,22 @@ void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
     //PyTuple_SetItem(conf_args, 2, pscd);
 
     //config_obj = PyObject_CallObject(conf_function, conf_args);
-    printf("Calling tuf.interposition.configure. . .\n");
+    
     /* Use of the following causes seg faults.  I was using this because a tutorial
      * said to, but after looking through the API, I don't see why we can't just use
      * PyObject_CallFunction.  I'm changing over to this format, but we may need to
      * revisit this idea later, as we'll need flexibility in returned data types for
      * the interplay between configure/deconfigure.*/
     //ptr = PyObject_CallObject(conf_function, conf_args);
-    ptr = PyObject_CallFunction(conf_function, "sss", tuf_intrp_json, p_repo_dir, p_ssl_cert_dir);
+    //ptr = PyObject_CallFunction(conf_function, "sss", tuf_intrp_json, p_repo_dir, p_ssl_cert_dir);
 
     //Clean up
-    printf("Cleaning up. . .\n");
-    Py_XDECREF(tuf_intrp_mod);
-    Py_XDECREF(tuf_dict);
-    Py_XDECREF(conf_function);
-    Py_XDECREF(conf_args);
+
     //Py_DECREF(conf_obj); // Figure out how to cleanly decrement this ref.  Think we need globals :S
     //Py_XDECREF(tij);
     //Py_XDECREF(prd);
     //Py_XDECREF(pscd);
-    printf("Done.\n");
+    
     //return config_obj;
 }
 
