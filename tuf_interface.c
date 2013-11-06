@@ -33,10 +33,20 @@ PyObject *ptr;
 /*
  * Method to call TUFs configure method.  This function takes the JSON interposition filename
  * as well as the parent repository directory and the parent ssl certificate directory, and
- * configures TUF to interpose on update calls
+ * configures TUF to interpose on update calls.
+ * 
+ * TODO:  At some point, we'll need to get this object back in a persistent manner.  This is
+ * due to the fact that deconfigure requires the configuration object as it's paramter...
+ * I'm not sure how to do this atm... but it might be as simple as handing ruby back the C
+ * created PyObject from the CallObject/CallFunction...
  */
 //PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
-void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
+
+/* Par0 - the Tuf Interposition JSON Configurtion file
+ * Par1 - Parent Repository Directory
+ * Par2 - Parent SSL Certificate Directory
+ */
+void Py_TUFConfigure(char* par0, char* par1, char* par2){
     /* Init the python env */
     Py_Initialize();
 
@@ -67,15 +77,19 @@ void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
     }
     
     /* Not used here as we used CallFunction as opposed to CallObject */
-    //PyObject *conf_args = PyTuple_New(3);
+    PyObject *args = PyTuple_New(3);
+    PyObject *arg0 = PyString_FromString(par0);
+    PyTuple_SetItem(args, 0, arg0);
+    PyObject *arg1 = PyString_FromString(par1);
+    PyTuple_SetItem(args, 1, arg1);
+    PyObject *arg2 = PyString_FromString(par2);
+    PyTuple_SetItem(args, 2, arg2);
 
     /* Check that the function was found, and is callable. */
-    printf("Calling tuf.interposition.configure. . .\n");
+    //printf("Calling tuf.interposition.configure. . .\n");
     if(function != NULL && PyCallable_Check(function)){
-        ptr = PyObject_CallFunction(function, "sss", 
-                                    tuf_intrp_json, 
-                                    p_repo_dir, 
-                                    p_ssl_cert_dir); 
+        //ptr = PyObject_CallFunction(function, "sss", tuf_intrp_json, p_repo_dir, p_ssl_cert_dir); 
+        ptr = PyObject_CallObject(function, args); 
     }
     else{
         PyErr_Print();
@@ -92,9 +106,93 @@ void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
     /* Terminate the python environment. */
     Py_Finalize();
     printf("Done.\n");
+}
 
 
+
+/*
+ * Method to call TUFs configure method.  This function takes the JSON interposition filename
+ * as well as the parent repository directory and the parent ssl certificate directory, and
+ * configures TUF to interpose on update calls
+ */
+//PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
+void Py_TUFDeconfigure(PyObject *tuf_conf){
+    /* Init the python env */
+    Py_Initialize();
+
+    PyObject *name = PyString_FromString("tuf.interposition");
+    PyObject *module = PyImport_Import(name);
+    PyObject *dict;
+    PyObject *function;
+
+    /* Get the Modules Dictionary */
+    if(module != NULL){
+        dict = PyModule_GetDict(module);
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
+
+    /* Get the specific Function we're interested in. */
+    if(dict != NULL){
+        function = PyDict_GetItemString(dict, "deconfigure");
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
     
+    /* Not used here as we used CallFunction as opposed to CallObject */
+    PyObject *args = PyTuple_New(1);
+    PyTuple_SetItem(args, 0, tuf_conf);
+
+    /* Check that the function was found, and is callable. */
+    printf("Calling tuf.interposition.deconfigure. . .\n");
+    if(function != NULL && PyCallable_Check(function)){
+        //ptr = PyObject_CallFunction(function, "sss", tuf_intrp_json, p_repo_dir, p_ssl_cert_dir); 
+        ptr = PyObject_CallObject(function, args);
+        //ptr = PyObject_CallObject(function, tuf_conf);
+    }
+    else{
+        PyErr_Print();
+        return;
+    }
+    
+    /* Clean up the references used. */
+    printf("Cleaning up. . .\n");
+    Py_XDECREF(name);
+    Py_XDECREF(module);
+    Py_XDECREF(dict);
+    Py_XDECREF(function);
+    Py_XDECREF(args);
+
+    /* Terminate the python environment. */
+    Py_Finalize();
+    printf("Done.\n");
+}
+
+
+
+int main(int argc, char* argv[]){
+
+    printf("Configuring TUF Interposition.\n");
+    Py_TUFConfigure("tuf.interposition.json", "./", "./");
+    printf("Configuration finished.  Deconfiguring\n");
+    Py_TUFDeconfigure(ptr);
+    printf("TUF Interposition has been configured.\n");
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
     /*
      * Not sure any of the below code is needed.  Leaving for now just in case.
      */
@@ -135,19 +233,3 @@ void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
     //Py_XDECREF(pscd);
     
     //return config_obj;
-}
-
-
-int main(int argc, char* argv[]){
-
-    printf("Configuring TUF Interposition.\n");
-    Py_TUFConfigure("tuf.interposition.json", "./", "./");
-    printf("TUF Interposition has been configured.\n");
-    
-    return 0;
-}
-
-
-
-
-
