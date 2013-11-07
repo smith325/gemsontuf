@@ -27,37 +27,72 @@
 
 #include "python2.7/Python.h"
 
+PyObject *ptr;
+
+
+
+
+/*
+ * Method to call TUFs configure method.  This function takes the JSON interposition filename
+ * as well as the parent repository directory and the parent ssl certificate directory, and
+ * configures TUF to interpose on update calls
+ */
+//PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
+void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
+    // Init the python env
+    Py_Initialize();
+
+    // Get a hold of the configure function
+    printf("Loading the 'configure' method from the tuf.interposition library. . .\n");
+    PyObject *tuf_intrp_mod = PyImport_AddModule("tuf.interposition");
+    PyObject *tuf_dict      = PyModule_GetDict(tuf_intrp_mod);
+    PyObject *conf_function = PyDict_GetItemString(tuf_dict, "configure");
+    PyObject *conf_args     = PyTuple_New(3);
+    
+    // Note: Scoping issue here, we need to hand back a PyObject pointer
+    // as we will use this pointer later for the deconfigure function call...
+    // So how do we get the 'config' object out of this scope, but also
+    // make this function externally call-able
+    PyObject *config_obj;
+    
+    // Convert the handed strings into PyStrings to pass to the configure method
+    printf("Converting arguments to PyStrings. . .\n");
+    PyObject *tij  = PyString_FromString(tuf_intrp_json);
+    PyObject *prd  = PyString_FromString(p_repo_dir);
+    PyObject *pscd = PyString_FromString(p_ssl_cert_dir);
+
+    // Set the Arguments Tuple
+    printf("Loading the arguments. . .\n");
+    PyTuple_SetItem(conf_args, 0, tij);
+    PyTuple_SetItem(conf_args, 1, prd);
+    PyTuple_SetItem(conf_args, 2, pscd);
+
+    //config_obj = PyObject_CallObject(conf_function, conf_args);
+    printf("Calling tuf.interposition.configure. . .\n");
+    ptr = PyObject_CallObject(conf_function, conf_args);
+
+    //Clean up
+    printf("Cleaning up. . .\n");
+    Py_DECREF(tuf_intrp_mod);
+    Py_DECREF(tuf_dict);
+    Py_DECREF(conf_function);
+    Py_DECREF(conf_args);
+    //Py_DECREF(conf_obj); // Figure out how to cleanly decrement this ref.  Think we need globals :S
+    Py_DECREF(tij);
+    Py_DECREF(prd);
+    Py_DECREF(pscd);
+    Py_Finalize();
+    printf("Done.\n");
+    //return config_obj;
+}
+
 
 int main(int argc, char* argv[]){
 
-    Py_Initialize();
-
-    //PyObject *main_module = PyImport_AddModule("__main__");
-    printf("Adding the tuf.interposition module\n");
-    PyObject *tuf_int_mod = PyImport_AddModule("tuf.interposition");
-    printf("Adding the Tuf modules dictionary\n");
-    PyObject *tuf_dict   = PyModule_GetDict(tuf_int_mod); // Get the TUF module's global dictionary
-    printf("Adding the 'configure' function\n");
-    PyObject *conf_func  = PyDict_GetItemString(tuf_dict, "configure"); // Get tuf.interposition.configure method
-    printf("Adding the 'deconfigure' function\n");
-    PyObject *dconf_func = PyDict_GetItemString(tuf_dict, "deconfigure"); // Get tuf.interposition.deconfigure method
-    // TODO: Build the arguments for tuf.interposition
-    //conf_args  = NULL; // Arguments to be passed to tuf.interposition.configure
-    //dconf_args = NULL; 
-
-    // Call the interposition function
-    printf("Calling the configure function with NULL as args\n");
-    PyObject_CallObject(conf_func, NULL);
-    printf("Calling the deconfigure function with NULL as args\n");
-    PyObject_CallObject(dconf_func, NULL);
+    printf("Configuring TUF Interposition.\n");
+    Py_TUFConfigure("tuf.interposition.json", "./", "./");
+    printf("TUF Interposition has been configured.\n");
     
-    // Decrement the reference counter for each PyObj we've played with
-    Py_DECREF(tuf_int_mod);
-    Py_DECREF(tuf_dict);
-    Py_DECREF(conf_func);
-    Py_DECREF(dconf_func);
-    printf("Hello!\n");
-
     return 0;
 }
 
