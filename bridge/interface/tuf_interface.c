@@ -76,11 +76,12 @@ int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 * This method calls the TUF urlopen function, which opens a URL through TUF.
 */
 char* Py_TUF_urllib_urlopen(char* url) {
-    char* fname = "./.tmp_data_dump.raw";
     PyObject *urllibMod;
 	PyObject *http_resp;
 	PyObject *data;
-	FILE *fp;
+	PyObject *args;
+	char* resp;
+
 	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
 	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
@@ -90,7 +91,6 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	
 	/* call ~ http_resp = tuf.interposition.urllib_tuf.urlopen( url ) */
 	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlopen", "(s)", url );
-	//http_resp = PyObject_CallMethodObjArgs( urllibMod, PyString_FromString( "urlopen" ), PyString_FromString( url ), NULL );
 	if ( http_resp == NULL ) {
 		PyErr_Print();
 		return NULL;
@@ -104,17 +104,10 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	}
 	Py_XDECREF( http_resp );
 	
-    fp = fopen(fname, "w");
-    PyObject_Print(data, fp, Py_PRINT_RAW);
-    fclose(fp);
-    
-    //this char *resp should be moved to the top
-    /*
-    char *resp;
     args = PyTuple_New( 1 );
 	PyTuple_SetItem(args, 0, data);
     
-	_fileLength = PyString_Size( http_resp );
+	_fileLength = PyString_Size( data );
 
 	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
 		PyErr_Print();
@@ -124,24 +117,17 @@ char* Py_TUF_urllib_urlopen(char* url) {
 
     // Return the file
 	return resp;
-	*/
-	
-	//below can be deleted if the above works
-	Py_XDECREF( data );
-	
-    // Return the name of the file
-	return fname;
 }
 
 /*
 * This method calls the TUF urlopen function from tuf.interposition.urllib2_tuf
 */
 char* Py_TUF_urllib2_urlopen(char* url) {
-    char* fname = "./.tmp_data_dump.raw";
     PyObject *urllibMod;
 	PyObject* http_resp;
 	PyObject* data;
-	FILE *fp;
+	PyObject* args;
+	char* resp;
 	
 	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
 	urllibMod = PyImport_AddModule( "urllib2_tuf" );
@@ -165,16 +151,6 @@ char* Py_TUF_urllib2_urlopen(char* url) {
 	}
 	Py_XDECREF( http_resp );
     
-
-    /* Dump the data out to a file */
-  
-    fp = fopen(fname, "w");
-    PyObject_Print(data, fp, Py_PRINT_RAW);
-    fclose(fp);
-    
-	/*
-	//this char* resp should be moved to the top.
-    char *resp;
     args = PyTuple_New( 1 );
 	PyTuple_SetItem(args, 0, data);
     
@@ -184,14 +160,10 @@ char* Py_TUF_urllib2_urlopen(char* url) {
 		PyErr_Print();
 		return NULL;
 	}
+	Py_XDECREF( data );
 
     // Return the file
 	return resp;
-	*/
-	Py_XDECREF( data );
-	 
-    // Return the name of the file
-	return fname;
 }
 
 
