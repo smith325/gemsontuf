@@ -113,7 +113,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
 		PyErr_Print();
 		return NULL;
 	}
-	Py_XDECREF( data );
+	//Py_XDECREF( data );
 
     // Return the file
 	return resp;
