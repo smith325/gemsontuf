@@ -25,7 +25,7 @@
  * Best tutorial I've found thus far: http://www.linuxjournal.com/article/8497?page=0,2
  */
 
-#include "python2.7/Python.h"
+#include "tuf_interface.h"
 
 PyObject *ptr;
 
@@ -46,7 +46,7 @@ PyObject *ptr;
  * Par1 - Parent Repository Directory
  * Par2 - Parent SSL Certificate Directory
  */
-void Py_TUFConfigure(char* par0, char* par1, char* par2){
+void Py_TUFConfigure(char* par0, char* par1, char* par2) {
     /* Init the python env */
     Py_Initialize();
 
@@ -116,7 +116,9 @@ void Py_TUFConfigure(char* par0, char* par1, char* par2){
  * configures TUF to interpose on update calls
  */
 //PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
-void Py_TUFDeconfigure(PyObject *tuf_conf){
+void Py_TUFDeconfigure() {
+	PyObject *tuf_conf = ptr;	
+
     /* Init the python env */
     Py_Initialize();
 
@@ -173,7 +175,7 @@ void Py_TUFDeconfigure(PyObject *tuf_conf){
 }
 
 
-
+/*
 int main(int argc, char* argv[]){
 
     printf("Configuring TUF Interposition.\n");
@@ -184,7 +186,7 @@ int main(int argc, char* argv[]){
 
     return 0;
 }
-
+*/
 
 
 
