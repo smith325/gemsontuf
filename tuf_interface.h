@@ -1,4 +1,5 @@
 #include "python2.7/Python.h"
+#include <stdbool.h>
 
-void Py_TUFConfigure(char* par0, char* par1, char* par2);
-void Py_TUFDeconfigure();
+bool Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir);
+

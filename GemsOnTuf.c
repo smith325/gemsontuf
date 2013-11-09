@@ -30,15 +30,18 @@ void Init_GemsOnTuf() {
 }
 
 
-// void Py_TUFConfigure(char* par0, char* par1, char* par2)
+//bool Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir)
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 	char* argOne = StringValuePtr( par0 );
 	char* argTwo = StringValuePtr( par1 );
 	char* argThr = StringValuePtr( par2 );
 	
-	Py_TUFConfigure( argOne, argTwo, argThr );
-
-	return Qtrue;
+	bool worked = Py_TUFConfigure( argOne, argTwo, argThr );
+	
+	if ( worked )
+		return Qtrue;
+	else
+		return Qfalse; 
 }
 
 //void Py_TUFDeconfigure();

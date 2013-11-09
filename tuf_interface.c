@@ -26,9 +26,13 @@
 */
 
 #include "python2.7/Python.h"
+#include <stdbool.
+
+//#include "tuf_interface.h"
+
 
 PyObject *ptr;
-
+PyObject *configDict;
 
 
 
@@ -38,60 +42,65 @@ PyObject *ptr;
 * configures TUF to interpose on update calls
 */
 //PyObject* Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
-void Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
+bool Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir) {
     // Init the python env
     Py_Initialize();
 
-    // Get a hold of the configure function
-    printf("Loading the 'configure' method from the tuf.interposition library. . .\n");
-    PyObject *tuf_intrp_mod = PyImport_AddModule("tuf.interposition");
-    PyObject *tuf_dict = PyModule_GetDict(tuf_intrp_mod);
-    PyObject *conf_function = PyDict_GetItemString(tuf_dict, "configure");
-    PyObject *conf_args = PyTuple_New(3);
-    
-    // Note: Scoping issue here, we need to hand back a PyObject pointer
-    // as we will use this pointer later for the deconfigure function call...
-    // So how do we get the 'config' object out of this scope, but also
-    // make this function externally call-able
-    PyObject *config_obj;
-    
-    // Convert the handed strings into PyStrings to pass to the configure method
-    printf("Converting arguments to PyStrings. . .\n");
-    PyObject *tij = PyString_FromString(tuf_intrp_json);
-    PyObject *prd = PyString_FromString(p_repo_dir);
-    PyObject *pscd = PyString_FromString(p_ssl_cert_dir);
+	//add the current directory to the places to search for TUF
+	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *currentDirectory = PyString_FromString( "." );
+	PyList_Append( path, currentDirectory );
+	Py_DECREF( currentDirectory );
 
-    // Set the Arguments Tuple
-    printf("Loading the arguments. . .\n");
-    PyTuple_SetItem(conf_args, 0, tij);
-    PyTuple_SetItem(conf_args, 1, prd);
-    PyTuple_SetItem(conf_args, 2, pscd);
+	//import TUF module
+	PyObject *moduleName = PyString_FromString( "tuf.interposition" );
+	PyObject *tufInterMod = PyImport_Import( moduleName );
+	if ( tufInterMod == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+	Py_DECREF( moduleName );
+	
+	//get the configure function from tuf.interposition
+	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, "configure" );
+	Py_DECREF( tufInterMod );
+	
+	//convert arguements into Python types and create tuple for CallObject function
+	PyObject *args = PyTuple_New( 3 );
+    PyObject *arg0 = PyString_FromString( tuf_intrp_json );
+    PyTuple_SetItem(args, 0, arg0);
+    PyObject *arg1 = PyString_FromString( p_repo_dir );
+    PyTuple_SetItem(args, 1, arg1);
+    PyObject *arg2 = PyString_FromString( p_ssl_cert_dir );
+    PyTuple_SetItem(args, 2, arg2);
 
-    //config_obj = PyObject_CallObject(conf_function, conf_args);
-    printf("Calling tuf.interposition.configure. . .\n");
-    ptr = PyObject_CallObject(conf_function, conf_args);
+	//calls the config function from the tuf.interposition module
+	//returns a dictionary with the configurations	
+	//we are currently storing this globally 	
+	configDict = PyObject_CallObject( configFunction, args );
 
-    //Clean up
-    printf("Cleaning up. . .\n");
-    Py_DECREF(tuf_intrp_mod);
-    Py_DECREF(tuf_dict);
-    Py_DECREF(conf_function);
-    Py_DECREF(conf_args);
-    //Py_DECREF(conf_obj); // Figure out how to cleanly decrement this ref. Think we need globals :S
-    Py_DECREF(tij);
-    Py_DECREF(prd);
-    Py_DECREF(pscd);
-    Py_Finalize();
-    printf("Done.\n");
-    //return config_obj;
+	Py_DECREF( arg0 );
+	Py_DECREF( arg1 );
+	Py_DECREF( arg2 );
+	Py_DECREF( args );
+	Py_DECREF( configFunction );
+
+	if ( configDict == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+
+
+	printf( "TUF configured.\n" );
+	return true;
 }
 
 
 int main(int argc, char* argv[]){
 
-    printf("Configuring TUF Interposition.\n");
-    Py_TUFConfigure("tuf.interposition.json", "./", "./");
-    printf("TUF Interposition has been configured.\n");
+
+    bool hello = Py_TUFConfigure("tuf.interposition.json", "./", "./");
+
     
     return 0;
 }

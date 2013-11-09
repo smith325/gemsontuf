@@ -1,10 +1,10 @@
 {
   "configurations": {
     "rubygems.org": {
-      "repository_directory": "tuf-metadata",
+      "repository_directory": "client/",
       "repository_mirrors" : {
         "mirror1": {
-          "url_prefix": "https://rubygems.org",
+          "url_prefix": "http://localhost:9294",
           "metadata_path": "metadata",
           "targets_path": "targets",
           "confined_target_dirs": [""]
