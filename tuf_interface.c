@@ -26,7 +26,7 @@
 */
 
 #include "python2.7/Python.h"
-#include <stdbool.
+#include <stdbool.h>
 
 //#include "tuf_interface.h"
 
@@ -63,6 +63,10 @@ bool Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 	
 	//get the configure function from tuf.interposition
 	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, "configure" );
+	if ( configFunction == NULL ) {
+		PyErr_Print();
+		return false;
+	}
 	Py_DECREF( tufInterMod );
 	
 	//convert arguements into Python types and create tuple for CallObject function
