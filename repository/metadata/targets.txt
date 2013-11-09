@@ -1,0 +1,196 @@
+{
+ "signatures": [
+  {
+   "keyid": "a48adfc56133e328957ecbe2511b726573cfc02091dc534357f4a436b3da7cc7", 
+   "method": "PyCrypto-PKCS#1 PSS", 
+   "sig": "7f65d50b73a83b1d7c8278cfb9e3802445fd3cef9c507cef821f9c04fabcdb6a2dad62eee3fdedc0a7b06eada8b94dcf2da378381d74c6f68115f1f6a177fea95972d1490949340f1b446ea7d1c5a770e0cf2f9f64e7b39fcf7328b871197cd851a29cf19b050f7ef47cd66fb346a0eebff756b83b7064bccb6061d7a2f6ca5e5cb1b041945a846f6282e9519ffb4f390cc2a5418c307c2706b8b8852b798420703175cfee2cec18c195bee33612f5a1b122ef2e2e5ceae2f57218ee0cea468fe84d964290faab7072e70bbc427ad1161b141c49047970587147ad573f8162744b26d09c36dae84657ffdc56bce97e06d0f51d1642a61a804ccb56136b2907e0"
+  }
+ ], 
+ "signed": {
+  "_type": "Targets", 
+  "expires": "2013-12-26 11:59:59 UTC", 
+  "targets": {
+   "gems/arbitrary-0.0.6.gem": {
+    "hashes": {
+     "sha256": "c5d0316c2e4a78ff45171bb7c30bc7fa8f418a6686eb62b99d74e3bc1405c3d7"
+    }, 
+    "length": 6144
+   }, 
+   "gems/important-0.0.6.gem": {
+    "hashes": {
+     "sha256": "8bc39e2b9428d7781f10e6aa0485a77d6bfb476a66ef3c2aacf32ab6a131d563"
+    }, 
+    "length": 6144
+   }, 
+   "gems/important-0.0.7.gem": {
+    "hashes": {
+     "sha256": "64cbaca523482975cecb6779f943ca0853f131360ad28d1f963f070af9e2db8d"
+    }, 
+    "length": 6144
+   }, 
+   "gems/important-0.0.8.gem": {
+    "hashes": {
+     "sha256": "edf7c94b4babcb0044a5ea73595196b7172047649f662e287fef045e9a901889"
+    }, 
+    "length": 6144
+   }, 
+   "gems/nekgem-0.0.1.gem": {
+    "hashes": {
+     "sha256": "abdea755436db52fe80d1825206c26f1a217324c7666b8d1db9102d7d60c06e4"
+    }, 
+    "length": 4096
+   }, 
+   "gems/nekgem-0.0.2.gem": {
+    "hashes": {
+     "sha256": "bcfc11f6d3e8b11ccd4b36cf6200d19e5d5fca18d8a634c68cd86e1bc086173f"
+    }, 
+    "length": 3072
+   }, 
+   "gems/nekgem-0.0.3.gem": {
+    "hashes": {
+     "sha256": "6a32f7aff2f099395e847f769f90ae12dc6aee5fd9979104003f30a2040e65a2"
+    }, 
+    "length": 6144
+   }, 
+   "gems/nekgem-0.0.4.gem": {
+    "hashes": {
+     "sha256": "c15000515d02da8ffa4021aa973841ef38a1178627c65f05e4a99183fb26677b"
+    }, 
+    "length": 114688
+   }, 
+   "latest_specs.4.8": {
+    "hashes": {
+     "sha256": "3a35617dd249e92269c108a7a9ab15a0d11472c256b9e2f8592f0c6ceeeba323"
+    }, 
+    "length": 437
+   }, 
+   "latest_specs.4.8.gz": {
+    "hashes": {
+     "sha256": "1f66c249c9c1d487a50d0e61cc1254414ea4a8c643801a5a5d98596f8e4fd5bf"
+    }, 
+    "length": 230
+   }, 
+   "prerelease_specs.4.8": {
+    "hashes": {
+     "sha256": "9140c85f1b09e03f67249bac40beb16b5b512b8915f702f44937b9011ff7205d"
+    }, 
+    "length": 4
+   }, 
+   "prerelease_specs.4.8.gz": {
+    "hashes": {
+     "sha256": "6f5ec5b5acff20547f5c00dbe89f463b7f724dd3ffdee4b51c4536ed075a8085"
+    }, 
+    "length": 24
+   }, 
+   "quick/Marshal.4.8/arbitrary-0.0.6.gemspec.rz": {
+    "hashes": {
+     "sha256": "8363e0f3070f4419d3325e408ac8a7d5d5d097bc9a90c8f3031d6cfbde0b7cf4"
+    }, 
+    "length": 249
+   }, 
+   "quick/Marshal.4.8/bigdecimal-1.2.0.gemspec.rz": {
+    "hashes": {
+     "sha256": "6a123438cef2f7b267a18b7aca86f58ccd266c945111201fcaa3b9651c734884"
+    }, 
+    "length": 311
+   }, 
+   "quick/Marshal.4.8/important-0.0.6.gemspec.rz": {
+    "hashes": {
+     "sha256": "4749fc138e93212bbca4adedd617d5e533d1f9283c04311c99fe24e307b41719"
+    }, 
+    "length": 246
+   }, 
+   "quick/Marshal.4.8/important-0.0.7.gemspec.rz": {
+    "hashes": {
+     "sha256": "d8242f922e3e2465689ced3da4e10ee0d82d03ce64edf24b8353ee602d1887fc"
+    }, 
+    "length": 246
+   }, 
+   "quick/Marshal.4.8/important-0.0.8.gemspec.rz": {
+    "hashes": {
+     "sha256": "f764c5bf75e2f34992b9d402ad7ca7cff97a8bef3d7a29791e4cf69ab5f9f1ed"
+    }, 
+    "length": 246
+   }, 
+   "quick/Marshal.4.8/io-console-0.4.2.gemspec.rz": {
+    "hashes": {
+     "sha256": "c18bc1c9b82f074b8f4f7dbe437cdc8f58c896a13b2c2bc52b455aa35f5ede49"
+    }, 
+    "length": 271
+   }, 
+   "quick/Marshal.4.8/json-1.7.7.gemspec.rz": {
+    "hashes": {
+     "sha256": "d61b3dd38377264b6133101246839e4ef638f9b4cebd0f7d49e396d5c8b2b22a"
+    }, 
+    "length": 203
+   }, 
+   "quick/Marshal.4.8/minitest-4.3.2.gemspec.rz": {
+    "hashes": {
+     "sha256": "04b6ca22b10781680482ef966f3b89b549e8fff305bfff0beb7dc462db5f7194"
+    }, 
+    "length": 208
+   }, 
+   "quick/Marshal.4.8/nekgem-0.0.1.gemspec.rz": {
+    "hashes": {
+     "sha256": "daf1dcd53c91ebaf090630594dd000982364ac6dc76407339d1ef8a4d11b2036"
+    }, 
+    "length": 241
+   }, 
+   "quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz": {
+    "hashes": {
+     "sha256": "8aba24981db08125539b3c3559f892615482627ad144d58869d1da974200026d"
+    }, 
+    "length": 244
+   }, 
+   "quick/Marshal.4.8/nekgem-0.0.3.gemspec.rz": {
+    "hashes": {
+     "sha256": "2d306900ce907632c3900975a018faf4681bdd58ac343c80c8c2921ccccd5920"
+    }, 
+    "length": 244
+   }, 
+   "quick/Marshal.4.8/nekgem-0.0.4.gemspec.rz": {
+    "hashes": {
+     "sha256": "b5959f4dda0dea64f8be43509d4b1800c02a4e0e1ed0845ea3af5f49311594ed"
+    }, 
+    "length": 241
+   }, 
+   "quick/Marshal.4.8/psych-2.0.0.gemspec.rz": {
+    "hashes": {
+     "sha256": "ff832b07d760be83c41ad4866178101328904f7bcc98ef4f4a70eac0e57dfaac"
+    }, 
+    "length": 414
+   }, 
+   "quick/Marshal.4.8/rake-0.9.6.gemspec.rz": {
+    "hashes": {
+     "sha256": "36c143d4fbdfac8722978e7d49968975b1d80637a1080fb2d3b5d7bc3b80a32a"
+    }, 
+    "length": 203
+   }, 
+   "quick/Marshal.4.8/rdoc-4.0.0.gemspec.rz": {
+    "hashes": {
+     "sha256": "ec95b07ae52cfb52e110c53175f2fd4bce10ce0d78830c132d07873cb10fbbe1"
+    }, 
+    "length": 201
+   }, 
+   "quick/Marshal.4.8/test-unit-2.0.0.0.gemspec.rz": {
+    "hashes": {
+     "sha256": "43dd82e257e81e35205e6997535e6c555cc994deb6ab008305375e27fe7df7d7"
+    }, 
+    "length": 334
+   }, 
+   "specs.4.8": {
+    "hashes": {
+     "sha256": "91ee3705f61c011488d17e20472946b185843d5d31c14cb2821c610c7d0ef0e1"
+    }, 
+    "length": 514
+   }, 
+   "specs.4.8.gz": {
+    "hashes": {
+     "sha256": "361d380ff0da87f28ca72347744a78144fde1d0d0ee49f7c12e94041d089c105"
+    }, 
+    "length": 252
+   }
+  }, 
+  "version": 1
+ }
+}
