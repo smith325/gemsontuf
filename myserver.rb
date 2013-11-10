@@ -13,6 +13,6 @@
 
 require 'webrick'
 server = WEBrick::HTTPServer.new :Port => 9294
-server.mount "/", WEBrick::HTTPServlet::FileHandler, './repository/targets/'
+server.mount "/", WEBrick::HTTPServlet::FileHandler, './repository/'
 trap('INT') { server.stop }
 server.start
