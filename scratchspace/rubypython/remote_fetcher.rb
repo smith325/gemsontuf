@@ -248,12 +248,12 @@ class Gem::RemoteFetcher
     RubyPython.start
     tuf = RubyPython.import("tuf.interposition")
     httplib = RubyPython.import("urllib_tuf")
-    tuf.configure()
-    print "opening" + url
-    httplib.urlopen(url).read()
-    #data = httplib.urlopen(uri.to_s).read()
+    tuf.configure(filename="/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/rubypython/tuf.interposition.json")
+    # Biggest problem right now: data is a shallow copy. Any operation done on it later ends up going into Python again.
+    data = httplib.urlopen(uri.to_s).read()
     #tuf.deconfigure()
-    #RubyPython.stop
+    # Stopping python at any point will cause segfaults due to data being a shallow copy (pointer) to python stuff.
+    #RubyPython.stop 
     #data
   end
   
@@ -273,8 +273,10 @@ class Gem::RemoteFetcher
 
     data = send "fetch_#{uri.scheme}", uri, mtime, head
 
+    #Line belows throws "AssertionError: Warning: Trying to DecRef NULL pointer" due to shallow copy of data.
     if data and !head and uri.to_s =~ /gz$/
       begin
+        #Line belows throws "can't convert RubyPython::RubyPyProxy into String" due to shallow copy of data.
         data = Gem.gunzip data
       rescue Zlib::GzipFile::Error
         raise FetchError.new("server did not return a valid file", uri.to_s)

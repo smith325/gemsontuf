@@ -1,6 +1,6 @@
 {
   "configurations": {
-    "localhost:8080": {
+    "rubygems.org": {
       "repository_directory": "../../client",
       "repository_mirrors" : {
         "mirror1": {
