@@ -325,3 +325,161 @@ RepositoryError: Missing u'/metadata/current'.  This path must exist and, at a m
 [2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/targets/gems/arbitrary-0.0.6.gem
 [2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (6144) == trusted length (6144)
 [2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: c5d0316c2e4a78ff45171bb7c30bc7fa8f418a6686eb62b99d74e3bc1405c3d7
+[2013-11-11 01:54:57,024 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpdS1Yy7
+[2013-11-11 01:54:57,024 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:54:57,025 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:54:57,025 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:54:57,025 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:54:57,026 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:54:57,026 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 01:54:57,026 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:56:57,260 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmp52ZkI0
+[2013-11-11 01:56:57,260 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:56:57,261 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:56:57,261 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:56:57,261 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:56:57,261 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:56:57,262 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 01:56:57,262 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:01:04,477 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpsaFrp3
+[2013-11-11 02:01:04,477 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:01:04,478 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:01:04,478 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:01:04,479 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:01:04,479 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:01:04,479 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:01:04,479 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:01:04,479 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:01:04,479 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:01:26,129 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpzKsX7C
+[2013-11-11 02:01:26,129 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:01:26,130 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:01:26,130 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:01:26,130 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:01:26,130 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:01:26,131 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:01:26,131 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:01:26,131 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:01:26,131 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:01:26,221 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmptJqDtY
+[2013-11-11 02:01:26,221 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:01:26,222 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:01:26,222 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:01:26,222 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:01:26,223 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:01:26,223 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:01:26,223 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:01:26,223 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:01:26,223 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:02:57,161 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpfth0Jp
+[2013-11-11 02:02:57,162 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:02:57,162 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:02:57,163 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:02:57,163 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:02:57,163 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:02:57,163 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:02:57,163 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:02:57,163 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:02:57,163 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:02:57,218 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:02:57,219 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:03:29,081 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpauZjB7
+[2013-11-11 02:03:29,081 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:03:29,082 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:03:29,082 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:03:29,082 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:03:29,082 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:03:29,083 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:03:29,083 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:03:29,083 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:03:29,083 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:03:29,136 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:03:29,136 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:04:02,291 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpAYwTnu
+[2013-11-11 02:04:02,291 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:04:02,291 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:04:02,292 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:04:02,292 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:04:02,292 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:04:02,292 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:04:02,292 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:04:02,293 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:04:02,293 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:04:02,346 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:04:02,346 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:04:10,734 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpE0SFmi
+[2013-11-11 02:04:10,735 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 02:04:10,735 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 02:04:10,736 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 02:04:10,736 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 02:04:10,736 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 02:04:10,736 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 02:04:10,736 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 02:04:10,736 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] We have an updater for netloc=localhost:8080 but not for netlocs=set(['localhost:8000'])
+[2013-11-11 02:04:10,736 UTC] [tuf.interposition] [WARNING][warn:43@utility.py] No updater or interposition for url=http://localhost:8000/latest_specs.4.8.gz
+[2013-11-11 02:04:10,790 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-11 02:04:10,791 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
