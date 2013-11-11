@@ -59,28 +59,8 @@ bool Py_TUF_urllib2_urlopen(char* url) */
 VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
 	char* url = StringValuePtr( rbUrl );
 	
-	bool worked = Py_TUF_urllib2_urlopen( url );
-	
-	
-	/*
-	 * 	This function is returning an HTML file associated with the website
-	 *  and stores it in temp
-	 *  I don't know what to do with it yet
-	 */
-	if ( worked )
-		worked = Py_TUF_urllib_urlretrieve( url )
-	else 
-		return Qfalse;
-		
-	if ( worked )
-		worked = Py_TUF_urllib2_urlopen( url );
-	else 
-		return Qfalse;
-		
-	if ( worked ) 
-		return Qtrue;
-	else 
-		return Qfalse;
+	char* readUrl = Py_TUF_urllib_urlopen( url );
+	return rb_str_new2( readUrl );
 }
 
 //void Py_TUFDeconfigure();
