@@ -42,8 +42,8 @@ PyObject *py_url = NULL;
 * as well as the parent repository directory and the parent ssl certificate directory, and
 * configures TUF to interpose on update calls
 */
-//PyObject* Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
 bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir) {
+//PyObject* Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
     // Init the python env
     Py_Initialize();
 
@@ -84,11 +84,11 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 	//we are currently storing this globally 	
 	configDict = PyObject_CallObject( configFunction, args );
 
-	Py_XDECREF( arg0 );
-	Py_XDECREF( arg1 );
-	Py_XDECREF( arg2 );
-	Py_XDECREF( args );
-	Py_XDECREF( configFunction );
+	//Py_XDECREF( arg0 );
+	//Py_XDECREF( arg1 );
+	//Py_XDECREF( arg2 );
+	//Py_XDECREF( args );
+	//Py_XDECREF( configFunction );
 
 	if ( configDict == NULL ) {
 		PyErr_Print();
@@ -98,6 +98,7 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 
 	printf( "TUF configured.\n" );
 	return true;
+	//return configDict;
 }
 
 
@@ -105,6 +106,7 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 * This method calls the TUF urlopen function, which opens a URL through TUF.
 */
 bool Py_TUF_urllib_urlopen(char* url) {
+//PyObject* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     Py_Initialize();
 
@@ -154,19 +156,21 @@ bool Py_TUF_urllib_urlopen(char* url) {
     }
 
     // Cleaning up References
-	Py_XDECREF( urlopenFunction );
-	Py_XDECREF( arg0 );
-	Py_XDECREF( args );
-	Py_XDECREF( mod1 );
-	Py_XDECREF( mod2 );
+	//Py_XDECREF( urlopenFunction );
+	//Py_XDECREF( arg0 );
+	//Py_XDECREF( args );
+	//Py_XDECREF( mod1 );
+	//Py_XDECREF( mod2 );
 
 	return true;
+	//return py_url;
 }
 
 /*
 * This method calls the TUF urlopen function from tuf.interposition.urllib2_tuf
 */
 bool Py_TUF_urllib2_urlopen(char* url) {
+//PyObject* Py_TUF_urllib2_urlopen(char* url) {
     // Init the python env
     Py_Initialize();
 
@@ -212,13 +216,14 @@ bool Py_TUF_urllib2_urlopen(char* url) {
     }
 
     // Cleaning up references
-	Py_XDECREF( urlopenFunction );
-	Py_XDECREF( arg0 );
-	Py_XDECREF( args );
-	Py_XDECREF( mod1 );
-	Py_XDECREF( mod2 );
+	//Py_XDECREF( urlopenFunction );
+	//Py_XDECREF( arg0 );
+	//Py_XDECREF( args );
+	//Py_XDECREF( mod1 );
+	//Py_XDECREF( mod2 );
 
 	return true;
+	//return py_url;
 }
 
 
@@ -227,6 +232,7 @@ bool Py_TUF_urllib2_urlopen(char* url) {
 * This method calls the TUF urlretreive function, which retreives a URL through TUF.
 */
 bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
+//PyObject* Py_TUF_urllib_urlretrieve(char* url, char* fname) {
      // Init the python env
     Py_Initialize();
 
@@ -271,13 +277,14 @@ bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
     	return false;
     }
 
-	Py_XDECREF( urlretrieveFunction );
-	Py_XDECREF( arg0 );
-	Py_XDECREF( args );
-	Py_XDECREF( mod1 );
-	Py_XDECREF( mod2 );
+	//Py_XDECREF( urlretrieveFunction );
+	//Py_XDECREF( arg0 );
+	//Py_XDECREF( args );
+	//Py_XDECREF( mod1 );
+	//Py_XDECREF( mod2 );
 
 	return true;
+	//return py_url;
 }
 
 
@@ -289,8 +296,13 @@ int main(int argc, char* argv[]){
 	// Each of these works independently of the others...
 	// which is better than where we were earlier today >.>
 
-	//bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	//bool hello = Py_TUF_urllib_urlopen("http://www.google.com");
+	//PyObject* obj = Py_TUF_configure("tuf.interposition.json", "./", "./");
+	//PyObject* obj = Py_TUF_urllib_urlopen("http://www.google.com");
+	//PyObject* obj = Py_TUF_urllib2_urlopen("http://www.google.com");
+	//PyObject* obj = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
+
+	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
+	hello = Py_TUF_urllib_urlopen("http://www.google.com");
     //bool hello = Py_TUF_urllib2_urlopen("http://www.google.com");
     //bool hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
     
