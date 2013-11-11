@@ -33,7 +33,7 @@
 
 PyObject *ptr;
 PyObject *configDict;
-PyObject *py_url;
+PyObject *py_url = NULL;
 
 
 
@@ -115,91 +115,71 @@ bool Py_TUF_urllib_urlopen(char* url) {
 	Py_XDECREF( currentDirectory );
 
 	/* Load the tuf.interposition module */
-	printf("Loading tuf.interposition. . .\n");
-	PyObject *moduleName = PyString_FromString( "tuf.interposition" );
-	PyObject *tufInterMod = PyImport_Import( moduleName );
+	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
+	PyObject *tufInterMod = PyImport_Import( mod1 );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
 		return false;
 	}
-	Py_XDECREF( moduleName );
+
+
+	/* Load the urllib_tuf module */
+	PyObject *mod2 = PyString_FromString( "urllib_tuf" );
+	PyObject *urllibMod = PyImport_Import( mod2 );
+	if ( urllibMod == NULL ) {
+		PyErr_Print();
+		return false;
+	}
 	
-	int i = PyObject_HasAttrString(tufInterMod, "urllib_tuf");
-	if(i){
-		printf("\n");
-	}
 
-
-
-	/* Get the urllib_tuf class from the interposition module */
-	printf("Loading tuf.interposition.urllib_tuf. . .\n");
-	PyObject *urllibClass = PyObject_GetAttrString( tufInterMod, "urllib_tuf" );
-	if ( urllibClass == NULL ) {
-		PyErr_Print();
-		return false;
-	}
-	Py_XDECREF( tufInterMod );
-
-
-	py_url = PyObject_CallMethod(urllibClass, "urlopen", "s", url);
-	printf("UrlOpen was called.\n");
-
-	if(py_url == NULL){
-		PyErr_Print();
-		return false;
-	}
 
 	/* Get the urlopen method from the urllib_tuf class */
-	printf("Loading tuf.interposition.urllib_tuf.urlopen. . .\n");
-	PyObject *urlopenFunction = PyObject_GetAttrString( urllibClass, "urlopen" );
+	PyObject *urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
 	if ( urlopenFunction == NULL ) {
 		PyErr_Print();
 		return false;
 	}
-	//Py_XDECREF( urllibClass );
-	
+
+
 	/* Convert arguements into Python types and create tuple for CallObject function */
 	PyObject *args = PyTuple_New( 1 );
-    PyObject *arg  = PyString_FromString( url );
-    if ( arg == NULL ) {
-		PyErr_Print();
-		return false;
-	}
-    PyTuple_SetItem(args, 0, arg);
+    PyObject *arg0 = PyString_FromString( url );
+    PyTuple_SetItem(args, 0, arg0);
+    //PyObject *arg1 = Py_None;
+    //PyTuple_SetItem(args, 1, arg1);
+    //PyObject *arg2 = Py_None;
+    //PyTuple_SetItem(args, 2, arg2);
+    
+	printf("Calling the urlopen method.\n");
+	//py_url = PyObject_CallFunction( urlopenFunction, "sss", url, NULL, NULL );
+	
+	PyObject_Print(args, stdout, Py_PRINT_RAW);
+	printf("\n");
 
-    Py_XDECREF( arg );
+    py_url = PyObject_CallObject( urlopenFunction, args );
 
-	// Calls the tuf.interposition.urlopen() function with a specified url	
-	printf("Calling the urlopen function. . .\n");
-	if(urlopenFunction == NULL){
-		printf("urlopen was null");
-		PyErr_Print();
-		return false;
-	}
-	if(args == NULL){
-		printf("args was null");
-		PyErr_Print();
-		return false;
-	}
-	//py_url = PyObject_CallFunction( urlopenFunction, args ); // segfault here.
-	py_url = PyObject_CallObject( urlopenFunction, args ); // segfault here.
-	//PyObject_CallObject( urlopenFunction, args );
-
-	/*
-	if ( py_url == NULL ) {
-		PyErr_Print();
-		return false;
-	}
-	*/
+    if(py_url == NULL){
+    	PyErr_Print();
+    	return false;
+    }
 
 	printf("Decrementing the function ptr. . .\n");
 	Py_XDECREF( urlopenFunction );
-
-
+	Py_XDECREF( arg0 );
+	//Py_XDECREF( arg1 );
+	//Py_XDECREF( arg2 );
+	Py_XDECREF( args );
+	Py_XDECREF( mod1 );
+	Py_XDECREF( mod2 );
 
 	printf( "URL Opened." );
 	return true;
 }
+
+
+
+
+
 
 
 /*
@@ -315,6 +295,7 @@ int main(int argc, char* argv[]){
 
 
     bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
+    //hello = Py_TUF_urllib_urlopen("http://hp-chan.com:8000/targets/gems/arbitrary-0.0.6.gem");
     hello = Py_TUF_urllib_urlopen("http://www.google.com");
     //hello = Py_TUF_urllib2_urlopen("http://www.google.com");
     //hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
