@@ -1,0 +1,327 @@
+[2013-11-11 01:28:56,199 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpW3D5O3
+[2013-11-11 01:28:56,199 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 257, in add
+    self.__updaters[configuration.hostname] = Updater(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 52, in __init__
+    self.configuration.repository_mirrors)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/client/updater.py", line 301, in __init__
+    raise tuf.RepositoryError(message)
+RepositoryError: Missing u'./metadata/current'.  This path must exist and, at a minimum, contain the root metadata file.
+[2013-11-11 01:28:56,200 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 257, in add
+    self.__updaters[configuration.hostname] = Updater(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 52, in __init__
+    self.configuration.repository_mirrors)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/client/updater.py", line 301, in __init__
+    raise tuf.RepositoryError(message)
+RepositoryError: Missing u'./metadata/current'.  This path must exist and, at a minimum, contain the root metadata file.
+[2013-11-11 01:29:28,417 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmp93mgrV
+[2013-11-11 01:29:28,417 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 257, in add
+    self.__updaters[configuration.hostname] = Updater(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 52, in __init__
+    self.configuration.repository_mirrors)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/client/updater.py", line 301, in __init__
+    raise tuf.RepositoryError(message)
+RepositoryError: Missing u'/metadata/current'.  This path must exist and, at a minimum, contain the root metadata file.
+[2013-11-11 01:29:28,418 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in tuf.interposition.json!
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 257, in add
+    self.__updaters[configuration.hostname] = Updater(configuration)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/interposition/updater.py", line 52, in __init__
+    self.configuration.repository_mirrors)
+  File "/usr/local/lib/python2.7/dist-packages/tuf/client/updater.py", line 301, in __init__
+    raise tuf.RepositoryError(message)
+RepositoryError: Missing u'/metadata/current'.  This path must exist and, at a minimum, contain the root metadata file.
+[2013-11-11 01:30:23,100 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpvmTbIB
+[2013-11-11 01:30:23,101 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:30:23,101 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:30:23,102 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:30:23,102 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-11 01:30:23,102 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:30:23,104 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:23,109 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-11 01:30:23,109 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,109 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,109 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-11 01:30:23,110 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-11 01:30:23,110 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:23,110 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-11 01:30:23,112 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/timestamp.txt'.
+[2013-11-11 01:30:23,112 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-11 01:30:23,112 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-11 01:30:23,112 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1303@updater.py] Metadata 'release.txt' has changed.
+[2013-11-11 01:30:23,112 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/release.txt
+[2013-11-11 01:30:23,113 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (1089) == required_length (1089)
+[2013-11-11 01:30:23,113 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,113 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,113 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 1089/1089 bytes.
+[2013-11-11 01:30:23,114 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 1089
+[2013-11-11 01:30:23,114 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/release.txt
+[2013-11-11 01:30:23,114 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (1089) == trusted length (1089)
+[2013-11-11 01:30:23,114 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 6d840f0fa85006e9a76634e2b525b0fb3a077026e3bd6505e105ae5aed01c17c
+[2013-11-11 01:30:23,115 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/release.txt'.
+[2013-11-11 01:30:23,115 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-11 01:30:23,115 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:23,115 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:23,115 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1303@updater.py] Metadata 'targets.txt' has changed.
+[2013-11-11 01:30:23,115 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/targets.txt
+[2013-11-11 01:30:23,116 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (5953) == required_length (5953)
+[2013-11-11 01:30:23,116 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,116 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:23,116 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 5953/5953 bytes.
+[2013-11-11 01:30:23,116 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 5953
+[2013-11-11 01:30:23,116 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/targets.txt
+[2013-11-11 01:30:23,116 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (5953) == trusted length (5953)
+[2013-11-11 01:30:23,117 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: b1c4d20aeafc0147a1be2d350df61476905ead276c9e9972912e30fdaef95ff7
+[2013-11-11 01:30:23,119 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/targets.txt'.
+[2013-11-11 01:30:23,119 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1324@updater.py] Removing delegated roles of 'targets'.
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'targets/gems/arbitrary-0.0.6.gem'
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,121 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:23,122 UTC] [tuf.client.updater] [ERROR][target:2120@updater.py] targets/gems/arbitrary-0.0.6.gem not found.
+[2013-11-11 01:30:51,382 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpDdjZrf
+[2013-11-11 01:30:51,383 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:30:51,383 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:30:51,384 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:30:51,384 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:30:51,384 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:30:51,384 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:30:51,384 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-11 01:30:51,384 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:30:51,386 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:51,391 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-11 01:30:51,391 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:51,391 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:51,391 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-11 01:30:51,391 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-11 01:30:51,392 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:51,392 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-11 01:30:51,393 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/timestamp.txt'.
+[2013-11-11 01:30:51,394 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-11 01:30:51,394 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-11 01:30:51,394 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-11 01:30:51,394 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:51,394 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'targets/gems/arbitrary-0.0.6.gem'
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,396 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:51,397 UTC] [tuf.client.updater] [ERROR][target:2120@updater.py] targets/gems/arbitrary-0.0.6.gem not found.
+[2013-11-11 01:30:55,878 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpBDYH7G
+[2013-11-11 01:30:55,878 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:30:55,879 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:30:55,879 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:30:55,879 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:30:55,880 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:30:55,880 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 01:30:55,880 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:30:55,880 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-11 01:30:55,880 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:30:55,882 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:55,887 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-11 01:30:55,887 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:55,888 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:30:55,888 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-11 01:30:55,888 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-11 01:30:55,888 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:30:55,888 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-11 01:30:55,890 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/timestamp.txt'.
+[2013-11-11 01:30:55,890 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-11 01:30:55,890 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-11 01:30:55,890 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-11 01:30:55,891 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:55,891 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'targets/gems/arbitrary-0.0.6.gem'
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,893 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target targets/gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:30:55,894 UTC] [tuf.client.updater] [ERROR][target:2120@updater.py] targets/gems/arbitrary-0.0.6.gem not found.
+[2013-11-11 01:31:38,667 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpSNSHTV
+[2013-11-11 01:31:38,668 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:31:38,668 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:31:38,669 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:31:38,669 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:31:38,669 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:31:38,669 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 01:31:38,669 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:31:38,670 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-11 01:31:38,670 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:38,672 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:31:38,677 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-11 01:31:38,677 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:38,677 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999952316 seconds
+[2013-11-11 01:31:38,678 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:38,678 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-11 01:31:38,678 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-11 01:31:38,678 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:31:38,678 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-11 01:31:38,680 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/timestamp.txt'.
+[2013-11-11 01:31:38,680 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-11 01:31:38,680 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-11 01:31:38,680 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-11 01:31:38,680 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:31:38,681 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'gems/arbitrary-0.0.6.gem'
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:38,683 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-11 01:31:38,683 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (6144) == required_length (6144)
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999949932 seconds
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 6144/6144 bytes.
+[2013-11-11 01:31:38,684 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 6144
+[2013-11-11 01:31:38,684 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:38,684 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (6144) == trusted length (6144)
+[2013-11-11 01:31:38,684 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: c5d0316c2e4a78ff45171bb7c30bc7fa8f418a6686eb62b99d74e3bc1405c3d7
+[2013-11-11 01:31:51,903 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpTjCgiZ
+[2013-11-11 01:31:51,904 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/root.txt)
+[2013-11-11 01:31:51,904 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/targets.txt)
+[2013-11-11 01:31:51,905 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/release.txt)
+[2013-11-11 01:31:51,905 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/current/timestamp.txt)
+[2013-11-11 01:31:51,905 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/root.txt)
+[2013-11-11 01:31:51,905 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(../../client/metadata/previous/timestamp.txt)
+[2013-11-11 01:31:51,905 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-11 01:31:51,905 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-11 01:31:51,906 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:51,907 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:31:51,913 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-11 01:31:51,913 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:51,913 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:51,913 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-11 01:31:51,913 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-11 01:31:51,913 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/metadata/timestamp.txt
+[2013-11-11 01:31:51,913 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/panhchan/workspace/Assignment3/gemsontuf/client/metadata/current/timestamp.txt'.
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:31:51,916 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'gems/arbitrary-0.0.6.gem'
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,918 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,919 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,919 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,919 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target gems/arbitrary-0.0.6.gem in role targets
+[2013-11-11 01:31:51,919 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-11 01:31:51,919 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:8000/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (6144) == required_length (6144)
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999949932 seconds
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 6144/6144 bytes.
+[2013-11-11 01:31:51,920 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 6144
+[2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:8000/targets/gems/arbitrary-0.0.6.gem
+[2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (6144) == trusted length (6144)
+[2013-11-11 01:31:51,920 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: c5d0316c2e4a78ff45171bb7c30bc7fa8f418a6686eb62b99d74e3bc1405c3d7
