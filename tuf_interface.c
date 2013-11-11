@@ -162,8 +162,9 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 /*
 * This method calls the TUF urlopen function, which opens a URL through TUF.
 */
-bool Py_TUF_urllib_urlopen(char* url) {
+//bool Py_TUF_urllib_urlopen(char* url) {
 //PyObject* Py_TUF_urllib_urlopen(char* url) {
+char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     Py_Initialize();
 
@@ -178,7 +179,8 @@ bool Py_TUF_urllib_urlopen(char* url) {
 	PyObject *tufInterMod = PyImport_Import( mod1 );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
-		return false;
+		//return false;
+		return NULL;
 	}
 
 	/* Load the urllib_tuf module */
@@ -186,14 +188,16 @@ bool Py_TUF_urllib_urlopen(char* url) {
 	PyObject *urllibMod = PyImport_Import( mod2 );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
-		return false;
+		//return false;
+		return NULL;
 	}
 	
 	/* Get the urlopen method from the urllib_tuf class */
 	PyObject *urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
 	if ( urlopenFunction == NULL ) {
 		PyErr_Print();
-		return false;
+		//return false;
+		return NULL;
 	}
 
 	/* Convert arguements into Python types and create tuple for CallObject function */
@@ -204,28 +208,39 @@ bool Py_TUF_urllib_urlopen(char* url) {
 	PyObject* pySocket = PyObject_CallObject( urlopenFunction, args );
 	if(pySocket == NULL){
 		PyErr_Print();
-		return false;
+		//return false;
+		return NULL;
 	}
 
 	/* Calls the socket.read() function in Python */
 	PyObject *py_obj = PyObject_GetAttrString( pySocket, "read" );
 	if ( py_obj == NULL ) {
 		PyErr_Print();
-		return false;
-	}
+		//return false;
+		return NULL;
+	} 
 
 	/* Build a temporary tuple that we can call read() with */
 	PyObject* targs = PyTuple_New(0);
-    py_url = PyObject_CallObject(py_obj, targs);
+	PyObject* http_resp = PyObject_CallObject(py_obj, targs);
+	if( http_resp == NULL ){
+    	PyErr_Print();
+    	return NULL;
+    }
+
+	char* resp = PyString_AsString(http_resp);
+    
 
     /* Print out the data we got back */
-	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	printf("\n");
-
+	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	//printf("\n");
+	/*
     if(py_url == NULL){
     	PyErr_Print();
-    	return false;
+    	//return false;
+		return NULL;
     }
+    */
 
     // Cleaning up References
 	//Py_XDECREF( urlopenFunction );
@@ -234,7 +249,7 @@ bool Py_TUF_urllib_urlopen(char* url) {
 	//Py_XDECREF( mod1 );
 	//Py_XDECREF( mod2 );
 
-	return true;
+	return resp;
 	//return py_url;
 }
 
@@ -374,7 +389,14 @@ int main(int argc, char* argv[]){
 	//PyObject* obj = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
 
 	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	hello = Py_TUF_urllib_urlopen("http://www.google.com");
+	//hello = Py_TUF_urllib_urlopen("http://www.google.com");
+	char* s = Py_TUF_urllib_urlopen("http://www.google.com");
+	if( s == NULL ){
+		printf("HTTP Response was NULL!\n");
+	}
+	else{
+		printf("%s\n", s);
+	}
     //bool hello = Py_TUF_urllib2_urlopen("http://www.google.com");
     //bool hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
     
