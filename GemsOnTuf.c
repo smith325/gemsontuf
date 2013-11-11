@@ -15,18 +15,22 @@ void exec_interactive_interpreter()
 
 //?
 VALUE GemsOnTuf = Qnil;
+VALUE TUF = Qnil;
 
 void Init_GemsOntuf();
 
 //declare methods
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 );
+VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl );
 VALUE method_TUFDeconfigure( VALUE self );
 
 //init methods
 void Init_GemsOnTuf() {
     GemsOnTuf = rb_define_module("GemsOnTuf");
-	rb_define_method( GemsOnTuf, "TUFConfigure", method_TUFConfigure, 3 );
-	rb_define_method( GemsOnTuf, "TUFDeconfigure", method_TUFDeconfigure, 0 );
+    TUF = rb_define_class_under( GemsOnTuf, "TUF", rb_cObject );
+	rb_define_method( TUF, "configure", method_TUFConfigure, 3 );
+	rb_define_method( TUF, "deconfigure", method_TUFDeconfigure, 0 );
+	rb_define_method( TUF, "urlOpen", method_TUFurlOpen, 1 );
 }
 
 
@@ -42,6 +46,22 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 		return Qtrue;
 	else
 		return Qfalse; 
+}
+
+
+/*bool Py_TUF_urllib_urlopen(char* url);
+bool Py_TUF_urllib_urlopen(char* url);
+bool Py_TUF_urllib_urlretreive(char* url, char* fname);*/
+
+//bool Py_TUF_urllib_urlopn( char* url ) 
+VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
+	char* url = StringValuePtr( rbUrl );
+	bool worked = Py_TUF_urllib2_urlopen( url );
+
+	if ( worked ) 
+		return Qtrue;
+	else 
+		return Qfalse;
 }
 
 //void Py_TUFDeconfigure();
