@@ -1,0 +1,17 @@
+To use the C->Ruby module
+
+
+irb -I .
+require 'GemsOnTuf'
+tuf = GemsOnTuf::Tuf.new
+working = tuf.configure("configfile") #should return true unless there was an error
+working = tuf.urlOpen("http://url.com") #should also return true if there was no error
+
+
+
+
+I am not sure if it is necessary to make them return bool values but for now that's how it's setup once we start implementing
+I'll have a better idea of what would be more useful
+
+
+
