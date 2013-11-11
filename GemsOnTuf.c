@@ -51,13 +51,32 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 
 /*bool Py_TUF_urllib_urlopen(char* url);
 bool Py_TUF_urllib_urlopen(char* url);
-bool Py_TUF_urllib_urlretreive(char* url, char* fname);*/
+bool Py_TUF_urllib_urlretreive(char* url, char* fname);
+bool Py_TUF_urllib2_urlopen(char* url) */
 
 //bool Py_TUF_urllib_urlopn( char* url ) 
+//
 VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
 	char* url = StringValuePtr( rbUrl );
+	
 	bool worked = Py_TUF_urllib2_urlopen( url );
-
+	
+	
+	/*
+	 * 	This function is returning an HTML file associated with the website
+	 *  and stores it in temp
+	 *  I don't know what to do with it yet
+	 */
+	if ( worked )
+		worked = Py_TUF_urllib_urlretrieve( url )
+	else 
+		return Qfalse;
+		
+	if ( worked )
+		worked = Py_TUF_urllib2_urlopen( url );
+	else 
+		return Qfalse;
+		
 	if ( worked ) 
 		return Qtrue;
 	else 
