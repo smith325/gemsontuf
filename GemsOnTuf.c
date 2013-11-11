@@ -1,7 +1,7 @@
 /*
  * Usage: 
  * require 'GemsOnTuf'
- * tuf = GemsOnTuf::TUF.new( args )
+ * tuf = GemsOnTuf::TUF.new( args )   #this is equivalent to tuf.interposition.configure()
  * tuf.method()
  * Methods:
  * deconfigure
@@ -39,9 +39,6 @@ void Init_GemsOnTuf() {
 //bool Py_TUFConfigure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir)
 //returns a bool, I think the exception from Python closes the program anyway though
 //so this might not be necessary. 
-//Thinking about changing this to return self and use this method as 
-//tuf = GemsOnTuf::TUF.configure
-//so we can skip the new step but I don't know if it works that way 
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 	char* argOne = StringValuePtr( par0 );
 	char* argTwo = StringValuePtr( par1 );
