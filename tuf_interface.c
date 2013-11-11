@@ -102,6 +102,63 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 }
 
 
+
+/*
+* Method to call TUFs configure method. This function takes the JSON interposition filename
+* as well as the parent repository directory and the parent ssl certificate directory, and
+* configures TUF to interpose on update calls
+*/
+bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
+    // Init the python env
+    Py_Initialize();
+
+	//add the current directory to the places to search for TUF
+	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *currentDirectory = PyString_FromString( "." );
+	PyList_Append( path, currentDirectory );
+	Py_XDECREF( currentDirectory );
+
+	//import TUF module
+	PyObject *moduleName = PyString_FromString( "tuf.interposition" );
+	PyObject *tufInterMod = PyImport_Import( moduleName );
+	if ( tufInterMod == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+	Py_XDECREF( moduleName );
+	
+	//get the configure function from tuf.interposition
+	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, "deconfigure" );
+	if ( configFunction == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+	Py_XDECREF( tufInterMod );
+
+	//calls the config function from the tuf.interposition module
+	//returns a dictionary with the configurations	
+	//we are currently storing this globally 	
+	configDict = PyObject_CallObject( configFunction, tuf_config_obj );
+
+	//Py_XDECREF( arg0 );
+	//Py_XDECREF( arg1 );
+	//Py_XDECREF( arg2 );
+	//Py_XDECREF( args );
+	//Py_XDECREF( configFunction );
+
+	if ( configDict == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+
+
+	printf( "TUF deconfigured.\n" );
+	return true;
+	//return configDict;
+}
+
+
+
 /*
 * This method calls the TUF urlopen function, which opens a URL through TUF.
 */
@@ -144,11 +201,26 @@ bool Py_TUF_urllib_urlopen(char* url) {
     PyObject *arg0 = PyString_FromString( url );
     PyTuple_SetItem(args, 0, arg0);
 	
-	// Left for debugging purposes.
-	//PyObject_Print(args, stdout, Py_PRINT_RAW);
-	//printf("\n");
+	PyObject* pySocket = PyObject_CallObject( urlopenFunction, args );
+	if(pySocket == NULL){
+		PyErr_Print();
+		return false;
+	}
 
-    py_url = PyObject_CallObject( urlopenFunction, args );
+	/* Calls the socket.read() function in Python */
+	PyObject *py_obj = PyObject_GetAttrString( pySocket, "read" );
+	if ( py_obj == NULL ) {
+		PyErr_Print();
+		return false;
+	}
+
+	/* Build a temporary tuple that we can call read() with */
+	PyObject* targs = PyTuple_New(0);
+    py_url = PyObject_CallObject(py_obj, targs);
+
+    /* Print out the data we got back */
+	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	printf("\n");
 
     if(py_url == NULL){
     	PyErr_Print();
