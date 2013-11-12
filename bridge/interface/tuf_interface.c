@@ -169,7 +169,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
-    char* resp = NULL;
+    //char* resp = NULL;
 
 	//add the current directory to the places to search for TUF
 	//PyObject *path = PySys_GetObject( (char *)"path" );
@@ -485,8 +485,8 @@ int main(int argc, char* argv[]){
 	
 
 
-	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
+	//bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
+	//char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
 
 /*
 	if( s == NULL ){
