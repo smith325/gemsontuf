@@ -12,10 +12,10 @@ rubygems:
 	git clone https://github.com/rubygems/rubygems.git
 
 bridge:
-	cd interface; ruby extconf.rb; make; cp GemsOnTuf.so ..; make clean; rm Makefile; cd ..
+	cd interface; ruby extconf.rb; make -s; cp GemsOnTuf.so ..; make clean; rm Makefile; cd ..
 
 setup:
-	@echo "Overwriging remote_fetcher.rb inside installation directory"
+	@echo "Overwriting remote_fetcher.rb inside installation directory"
 	cp remote_fetcher.rb rubygems/lib/rubygems
 	sed -i.bak 's/HOME/\/home\/$(USER)/g' rubygems/lib/rubygems/remote_fetcher.rb
 	@echo "Running gem setup"
