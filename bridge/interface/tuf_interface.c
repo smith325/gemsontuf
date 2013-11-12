@@ -47,19 +47,26 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 //PyObject* Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
     // Init the python env
     Py_Initialize();
-    char* path = "path";
-    char* tuf_mod_name = "tuf.interposition";
-    char* tuf_method_name = "configure";
+    PyObject *moduleName;
+    PyObject *tufInterMod;
+    PyObject *path;
+    PyObject *currentDirectory;
+    PyObject *configFunction;
+    PyObject *args;
+    PyObject *arg0;
+    PyObject *arg1;
+    PyObject *arg2;
+
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( path );
-	PyObject *currentDirectory = PyString_FromString( "." );
+	path = PySys_GetObject( "path" );
+	currentDirectory = PyString_FromString( "." );
 	PyList_Append( path, currentDirectory );
 	Py_XDECREF( currentDirectory );
 
 	//import TUF module
-	PyObject *moduleName = PyString_FromString( tuf_mod_name );
-	PyObject *tufInterMod = PyImport_Import( moduleName );
+	moduleName = PyString_FromString( "tuf.interposition" );
+	tufInterMod = PyImport_Import( moduleName );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
 		return false;
@@ -67,7 +74,7 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 	Py_XDECREF( moduleName );
 	
 	//get the configure function from tuf.interposition
-	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, tuf_method_name );
+	configFunction = PyObject_GetAttrString( tufInterMod, "configure" );
 	if ( configFunction == NULL ) {
 		PyErr_Print();
 		return false;
@@ -75,12 +82,12 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 	Py_XDECREF( tufInterMod );
 	
 	//convert arguements into Python types and create tuple for CallObject function
-	PyObject *args = PyTuple_New( 3 );
-    PyObject *arg0 = PyString_FromString( tuf_intrp_json );
+	args = PyTuple_New( 3 );
+    arg0 = PyString_FromString( tuf_intrp_json );
     PyTuple_SetItem(args, 0, arg0);
-    PyObject *arg1 = PyString_FromString( p_repo_dir );
+    arg1 = PyString_FromString( p_repo_dir );
     PyTuple_SetItem(args, 1, arg1);
-    PyObject *arg2 = PyString_FromString( p_ssl_cert_dir );
+    arg2 = PyString_FromString( p_ssl_cert_dir );
     PyTuple_SetItem(args, 2, arg2);
 
 	//calls the config function from the tuf.interposition module
@@ -113,16 +120,21 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
     // Init the python env
     Py_Initialize();
+	PyObject *path;
+	PyObject *currentDirectory;
+	PyObject *moduleName;
+	PyObject *tufInterMod;
+	PyObject *configFunction;
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( (char *)"path" );
-	PyObject *currentDirectory = PyString_FromString( "." );
+	path = PySys_GetObject( (char *)"path" );
+	currentDirectory = PyString_FromString( "." );
 	PyList_Append( path, currentDirectory );
 	Py_XDECREF( currentDirectory );
 
 	//import TUF module
-	PyObject *moduleName = PyString_FromString( "tuf.interposition" );
-	PyObject *tufInterMod = PyImport_Import( moduleName );
+	moduleName = PyString_FromString( "tuf.interposition" );
+	tufInterMod = PyImport_Import( moduleName );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
 		return false;
@@ -130,7 +142,7 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 	Py_XDECREF( moduleName );
 	
 	//get the configure function from tuf.interposition
-	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, "deconfigure" );
+	configFunction = PyObject_GetAttrString( tufInterMod, "deconfigure" );
 	if ( configFunction == NULL ) {
 		PyErr_Print();
 		return false;
@@ -170,57 +182,34 @@ char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
-    //char* resp = NULL;
+    PyObject *urllibMod;
+	PyObject *urlopenFunction;
+	PyObject *args;
+	PyObject *arg0;
+	PyObject* pySocket;
+	PyObject *pySocketRead;
+	PyObject* http_resp;
 
-	//add the current directory to the places to search for TUF
-	//PyObject *path = PySys_GetObject( (char *)"path" );
-	//PyObject *currentDirectory = PyString_FromString( "." );
-	//PyList_Append( path, currentDirectory );
-	//Py_XDECREF( currentDirectory );
-
-	/* Load the tuf.interposition module */
-	//PyObject *mod1 = PyString_FromString( "tuf.interposition" );
-	/*PyObject *tufInterMod = PyImport_AddModule( "tuf.interposition" );
-	if ( tufInterMod == NULL ) {
-		PyErr_Print();
-		//return false;
-		return NULL;
-	}
-	*/
-	
 	/* Load the urllib_tuf module */
-	//PyObject *mod2 = PyString_FromString( "urllib_tuf" );
-	PyObject *urllibMod = PyImport_AddModule( "urllib_tuf" );
+	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
-		//return false;
 		return NULL;
 	}
 	
 	/* Get the urlopen method from the urllib_tuf class */
-	PyObject *urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
+	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
 	if ( urlopenFunction == NULL ) {
 		PyErr_Print();
-		//return false;
 		return NULL;
 	}
-
-	/* Get's the generic len function */
-	/*
-	PyObject *py_len = PyObject_GetAttrString( urllibMod, "len" );
-	if ( py_len == NULL ) {
-		PyErr_Print();
-		//return false;
-		return NULL;
-	}
-	*/
 
 	/* Convert arguements into Python types and create tuple for CallObject function */
-	PyObject *args = PyTuple_New( 1 );
-    PyObject *arg0 = PyString_FromString( url );
+	args = PyTuple_New( 1 );
+    arg0 = PyString_FromString( url );
     PyTuple_SetItem(args, 0, arg0);
 	
-	PyObject* pySocket = PyObject_CallObject( urlopenFunction, args );
+	pySocket = PyObject_CallObject( urlopenFunction, args );
 	if(pySocket == NULL){
 		PyErr_Print();
 		//return false;
@@ -228,8 +217,8 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	}
 
 	/* Calls the socket.read() function in Python */
-	PyObject *py_obj = PyObject_GetAttrString( pySocket, "read" );
-	if ( py_obj == NULL ) {
+	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
+	if ( pySocketRead == NULL ) {
 		PyErr_Print();
 		//return false;
 		return NULL;
@@ -238,30 +227,12 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	 
 
 	/* Build a temporary tuple that we can call read() with */
-	PyObject* targs = PyTuple_New(0);
-	PyObject* http_resp = PyObject_CallObject(py_obj, targs);
+	args = PyTuple_New(0);
+	http_resp = PyObject_CallObject(pySocketRead, args);
 	if( http_resp == NULL ){
     	PyErr_Print();
     	return NULL;
     }
-
-
-    //int j = PyString_Size(http_resp);
-    //printf("Response was %d long\n", j);
-    /* Print out the data we got back */
-	//PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
-	//printf("\n");
-
-
-
-    //PyTuple_SetItem(args, 0, http_resp);
-    //PyObject* len = PyObject_CallObject(py_len, args);
-
-
-	//char* resp[j];
-	//resp = PyString_AsString(http_resp);
-	//resp = PyString_AsStringAndSize(http_resp, resp, j);
-    
 
     /* Dump the data out to a file */
     FILE *fp;
@@ -269,80 +240,45 @@ char* Py_TUF_urllib_urlopen(char* url) {
     PyObject_Print(http_resp, fp, Py_PRINT_RAW);
     fclose(fp);
 
-
-
-    //printf("\nPrinting py_url\n");
-	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	//printf("\nPrinting http_resp\n");
-	//PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
-	//printf("\n");
-	/*
-    if(py_url == NULL){
-    	PyErr_Print();
-    	//return false;
-		return NULL;
-    }
-    */
-
-    // Cleaning up References
-	//Py_XDECREF( urlopenFunction );
-	//Py_XDECREF( arg0 );
-	//Py_XDECREF( args );
-	//Py_XDECREF( mod1 );
-	//Py_XDECREF( mod2 );
-	//return resp;
+    // Return the name of the file
 	return fname;
-	//return py_url;
 }
 
 /*
 * This method calls the TUF urlopen function from tuf.interposition.urllib2_tuf
 */
-bool Py_TUF_urllib2_urlopen(char* url) {
+char* Py_TUF_urllib2_urlopen(char* url) {
     // Init the python env
+    //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
-    char* resp = NULL;
-
-	//add the current directory to the places to search for TUF
-	//PyObject *path = PySys_GetObject( (char *)"path" );
-	//PyObject *currentDirectory = PyString_FromString( "." );
-	//PyList_Append( path, currentDirectory );
-	//Py_XDECREF( currentDirectory );
-
-	/* Load the tuf.interposition module */
-	/*
-	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
-	PyObject *tufInterMod = PyImport_Import( mod1 );
-	if ( tufInterMod == NULL ) {
-		PyErr_Print();
-		//return false;
-		return NULL;
-	}
-	*/
+    PyObject *urllibMod;
+	PyObject *urlopenFunction;
+	PyObject *args;
+	PyObject *arg0;
+	PyObject* pySocket;
+	PyObject *pySocketRead;
+	PyObject* http_resp;
 
 	/* Load the urllib_tuf module */
-	//PyObject *mod2 = PyString_FromString( "urllib2_tuf" );
-	PyObject *urllibMod = PyImport_AddModule( "urllib2_tuf" );
+	urllibMod = PyImport_AddModule( "urllib2_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
-		//return false;
 		return NULL;
 	}
 	
 	/* Get the urlopen method from the urllib_tuf class */
-	PyObject *urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
+	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
 	if ( urlopenFunction == NULL ) {
 		PyErr_Print();
-		//return false;
 		return NULL;
 	}
 
 	/* Convert arguements into Python types and create tuple for CallObject function */
-	PyObject *args = PyTuple_New( 1 );
-    PyObject *arg0 = PyString_FromString( url );
+	args = PyTuple_New( 1 );
+    arg0 = PyString_FromString( url );
     PyTuple_SetItem(args, 0, arg0);
 	
-	PyObject* pySocket = PyObject_CallObject( urlopenFunction, args );
+	pySocket = PyObject_CallObject( urlopenFunction, args );
 	if(pySocket == NULL){
 		PyErr_Print();
 		//return false;
@@ -350,94 +286,67 @@ bool Py_TUF_urllib2_urlopen(char* url) {
 	}
 
 	/* Calls the socket.read() function in Python */
-	PyObject *py_obj = PyObject_GetAttrString( pySocket, "read" );
-	if ( py_obj == NULL ) {
+	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
+	if ( pySocketRead == NULL ) {
 		PyErr_Print();
 		//return false;
 		return NULL;
 	} 
 
+	 
+
 	/* Build a temporary tuple that we can call read() with */
-	PyObject* targs = PyTuple_New(0);
-	PyObject* http_resp = PyObject_CallObject(py_obj, targs);
+	args = PyTuple_New(0);
+	http_resp = PyObject_CallObject(pySocketRead, args);
 	if( http_resp == NULL ){
     	PyErr_Print();
     	return NULL;
     }
 
-	resp = PyString_AsString(http_resp);
-    
+    /* Dump the data out to a file */
+    FILE *fp;
+    fp = fopen(fname, "w");
+    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
+    fclose(fp);
 
-    /* Print out the data we got back */
-    /*
-    printf("\nPrinting py_url\n");
-	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	printf("\nPrinting http_resp\n");
-	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	printf("\n");
-	*/
-	/*
-    if(py_url == NULL){
-    	PyErr_Print();
-    	//return false;
-		return NULL;
-    }
-    */
-
-    // Cleaning up References
-	//Py_XDECREF( urlopenFunction );
-	//Py_XDECREF( arg0 );
-	//Py_XDECREF( args );
-	//Py_XDECREF( mod1 );
-	//Py_XDECREF( mod2 );
-
-	return resp;
-	//return py_url;
+    // Return the name of the file
+	return fname;
 }
-
 
 
 /*
 * This method calls the TUF urlretreive function, which retreives a URL through TUF.
 */
-bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
+
+// NOTE: This function may not currently be working!!!
+
 //PyObject* Py_TUF_urllib_urlretrieve(char* url, char* fname) {
+bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
+	
      // Init the python env
     Py_Initialize();
+    PyObject *urllibMod;
+    PyObject *urlretrieveFunction;
+    PyObject *args;
+    PyObject *arg0;
 
-	//add the current directory to the places to search for TUF
-	//PyObject *path = PySys_GetObject( (char *)"path" );
-	//PyObject *currentDirectory = PyString_FromString( "." );
-	//PyList_Append( path, currentDirectory );
-	//Py_XDECREF( currentDirectory );
-
-	// Load the tuf.interposition module 
-	/*
-	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
-	PyObject *tufInterMod = PyImport_Import( mod1 );
-	if ( tufInterMod == NULL ) {
-		PyErr_Print();
-		return false;
-	}
-	*/
 	/* Load the urllib_tuf module */
-	//PyObject *mod2 = PyString_FromString( "urllib_tuf" );
-	PyObject *urllibMod = PyImport_AddModule( "urllib_tuf" );
+	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
 		return false;
 	}
 	
 	/* Get the urlopen method from the urllib_tuf class */
-	PyObject *urlretrieveFunction = PyObject_GetAttrString( urllibMod, "urlretrieve" );
+	urlretrieveFunction = PyObject_GetAttrString( urllibMod, "urlretrieve" );
 	if ( urlretrieveFunction == NULL ) {
 		PyErr_Print();
 		return false;
 	}
 
 	/* Convert arguements into Python types and create tuple for CallObject function */
-	PyObject *args = PyTuple_New( 1 );
-    PyObject *arg0 = PyString_FromString( url );
+	args = PyTuple_New( 1 );
+    arg0 = PyString_FromString( url );
     PyTuple_SetItem(args, 0, arg0);
 
     py_url = PyObject_CallObject( urlretrieveFunction, args );
@@ -483,8 +392,6 @@ int main(int argc, char* argv[]){
 	//test();
 	//test2();
 	
-	
-
 
 	//bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
 	//char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
