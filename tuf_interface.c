@@ -263,11 +263,11 @@ PyObject* Py_TUF_urllib_urlopen(char* url) {
     
 
     /* Print out the data we got back */
-    printf("\nPrinting py_url\n");
-	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	printf("\nPrinting http_resp\n");
-	PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
-	printf("\n");
+    //printf("\nPrinting py_url\n");
+	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	//printf("\nPrinting http_resp\n");
+	//PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
+	//printf("\n");
 	/*
     if(py_url == NULL){
     	PyErr_Print();
