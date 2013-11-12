@@ -165,7 +165,7 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 */
 //bool Py_TUF_urllib_urlopen(char* url) {
 //PyObject* Py_TUF_urllib_urlopen(char* url) {
-PyObject* Py_TUF_urllib_urlopen(char* url) {
+char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
@@ -258,11 +258,18 @@ PyObject* Py_TUF_urllib_urlopen(char* url) {
 
 
 	//char* resp[j];
-	resp = PyString_AsString(http_resp);
+	//resp = PyString_AsString(http_resp);
 	//resp = PyString_AsStringAndSize(http_resp, resp, j);
     
 
-    /* Print out the data we got back */
+    /* Dump the data out to a file */
+    FILE *fp;
+    fp = fopen("./.tmp_data_dump.raw", "w");
+    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
+    fclose(fp);
+
+
+
     //printf("\nPrinting py_url\n");
 	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
 	//printf("\nPrinting http_resp\n");
@@ -283,7 +290,7 @@ PyObject* Py_TUF_urllib_urlopen(char* url) {
 	//Py_XDECREF( mod1 );
 	//Py_XDECREF( mod2 );
 	//return resp;
-	return http_resp;
+	return resp;
 	//return py_url;
 }
 
@@ -479,8 +486,7 @@ int main(int argc, char* argv[]){
 
 
 	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	//char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
-	PyObject* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
+	char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
 
 /*
 	if( s == NULL ){
