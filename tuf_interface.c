@@ -231,7 +231,8 @@ char* Py_TUF_urllib_urlopen(char* url) {
     	return NULL;
     }
 
-	resp = PyString_AsString(http_resp);
+	//resp = PyString_AsString(http_resp);
+	resp = PyString_AS_STRING(http_resp);
     
 
     /* Print out the data we got back */
