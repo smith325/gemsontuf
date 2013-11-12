@@ -245,8 +245,13 @@ class Gem::RemoteFetcher
   # Expected to return the body of an HTTP response.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
     url = uri.to_s
-    tuf = GemsOnTuf::TUF.new(filename="/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/tuf.interposition.json","","")
-    tuf.urlOpen(url)
+    print "Getting: " + url + "\n"
+    tuf = GemsOnTuf::TUF.new("/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/tuf.interposition.json","./","./")
+    filename = tuf.urlOpen(url)
+    file = open(filename)
+    file = file.read()
+    #print file
+    file
   end
   
   alias :fetch_https :fetch_http
