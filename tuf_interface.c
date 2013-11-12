@@ -34,7 +34,7 @@
 PyObject *ptr;
 PyObject *configDict;
 PyObject *py_url = NULL;
-//char* resp[j];
+char* fname = ".tmp_data_dump.raw";
 
 
 
@@ -264,7 +264,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
 
     /* Dump the data out to a file */
     FILE *fp;
-    fp = fopen("./.tmp_data_dump.raw", "w");
+    fp = fopen(fname, "w");
     PyObject_Print(http_resp, fp, Py_PRINT_RAW);
     fclose(fp);
 
@@ -290,7 +290,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	//Py_XDECREF( mod1 );
 	//Py_XDECREF( mod2 );
 	//return resp;
-	return resp;
+	return fname;
 	//return py_url;
 }
 
