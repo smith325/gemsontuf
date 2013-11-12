@@ -1,3 +1,10 @@
+How to test via interactive ruby (irb):
+1. "irb -I"
+2. "require './GemsOnTuf.so'"
+3. "tuf = GemsOnTuf::TUF.new("/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/tuf.interposition.json","","")"
+4. "url ="https://rubygems.org/latest_specs.4.8.gz""
+5. "data = tuf.urlOpen(url)"
+
 How to test remote_fetcher.rb:
 
 1. Compile tuf_interface.c as directed: gcc tuf_interface.c -o tuf_interface -lpython2.7
