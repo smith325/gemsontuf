@@ -166,27 +166,29 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 //PyObject* Py_TUF_urllib_urlopen(char* url) {
 char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
+    //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
     char* resp = NULL;
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( (char *)"path" );
-	PyObject *currentDirectory = PyString_FromString( "." );
-	PyList_Append( path, currentDirectory );
-	Py_XDECREF( currentDirectory );
+	//PyObject *path = PySys_GetObject( (char *)"path" );
+	//PyObject *currentDirectory = PyString_FromString( "." );
+	//PyList_Append( path, currentDirectory );
+	//Py_XDECREF( currentDirectory );
 
 	/* Load the tuf.interposition module */
-	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
-	PyObject *tufInterMod = PyImport_Import( mod1 );
+	//PyObject *mod1 = PyString_FromString( "tuf.interposition" );
+	/*PyObject *tufInterMod = PyImport_AddModule( "tuf.interposition" );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
 		//return false;
 		return NULL;
 	}
-
+	*/
+	
 	/* Load the urllib_tuf module */
-	PyObject *mod2 = PyString_FromString( "urllib_tuf" );
-	PyObject *urllibMod = PyImport_Import( mod2 );
+	//PyObject *mod2 = PyString_FromString( "urllib_tuf" );
+	PyObject *urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
 		//return false;
@@ -249,7 +251,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	//Py_XDECREF( args );
 	//Py_XDECREF( mod1 );
 	//Py_XDECREF( mod2 );
-
+	printf("test\n");
 	return resp;
 	//return py_url;
 }
@@ -263,12 +265,13 @@ bool Py_TUF_urllib2_urlopen(char* url) {
     char* resp = NULL;
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( (char *)"path" );
-	PyObject *currentDirectory = PyString_FromString( "." );
-	PyList_Append( path, currentDirectory );
-	Py_XDECREF( currentDirectory );
+	//PyObject *path = PySys_GetObject( (char *)"path" );
+	//PyObject *currentDirectory = PyString_FromString( "." );
+	//PyList_Append( path, currentDirectory );
+	//Py_XDECREF( currentDirectory );
 
 	/* Load the tuf.interposition module */
+	/*
 	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
 	PyObject *tufInterMod = PyImport_Import( mod1 );
 	if ( tufInterMod == NULL ) {
@@ -276,10 +279,11 @@ bool Py_TUF_urllib2_urlopen(char* url) {
 		//return false;
 		return NULL;
 	}
+	*/
 
 	/* Load the urllib_tuf module */
-	PyObject *mod2 = PyString_FromString( "urllib2_tuf" );
-	PyObject *urllibMod = PyImport_Import( mod2 );
+	//PyObject *mod2 = PyString_FromString( "urllib2_tuf" );
+	PyObject *urllibMod = PyImport_AddModule( "urllib2_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
 		//return false;
@@ -358,22 +362,23 @@ bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
     Py_Initialize();
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( (char *)"path" );
-	PyObject *currentDirectory = PyString_FromString( "." );
-	PyList_Append( path, currentDirectory );
-	Py_XDECREF( currentDirectory );
+	//PyObject *path = PySys_GetObject( (char *)"path" );
+	//PyObject *currentDirectory = PyString_FromString( "." );
+	//PyList_Append( path, currentDirectory );
+	//Py_XDECREF( currentDirectory );
 
-	/* Load the tuf.interposition module */
+	// Load the tuf.interposition module 
+	/*
 	PyObject *mod1 = PyString_FromString( "tuf.interposition" );
 	PyObject *tufInterMod = PyImport_Import( mod1 );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
 		return false;
 	}
-
+	*/
 	/* Load the urllib_tuf module */
-	PyObject *mod2 = PyString_FromString( "urllib_tuf" );
-	PyObject *urllibMod = PyImport_Import( mod2 );
+	//PyObject *mod2 = PyString_FromString( "urllib_tuf" );
+	PyObject *urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
 		return false;
@@ -414,8 +419,6 @@ bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
 
 
 
-
-
 int main(int argc, char* argv[]){
 
 	// Each of these works independently of the others...
@@ -425,20 +428,114 @@ int main(int argc, char* argv[]){
 	//PyObject* obj = Py_TUF_urllib_urlopen("http://www.google.com");
 	//PyObject* obj = Py_TUF_urllib2_urlopen("http://www.google.com");
 	//PyObject* obj = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
+	/*
+	
+	Py_Initialize();
+	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *currentDirectory = PyString_FromString( "." );
+	PyList_Append( path, currentDirectory );
+	Py_XDECREF( currentDirectory );
+	*/
+	//test();
+	//test2();
+	
+	
+
 
 	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	//hello = Py_TUF_urllib_urlopen("http://www.google.com");
 	char* s = Py_TUF_urllib_urlopen("http://www.google.com");
+
+/*
 	if( s == NULL ){
 		printf("HTTP Response was NULL!\n");
 	}
 	else{
 		printf("%s\n", s);
 	}
-    //hello = Py_TUF_urllib2_urlopen("http://www.google.com");
-    //hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
-    
+	* */
+	hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
+    hello = Py_TUF_urllib2_urlopen("http://www.google.com");
+
     return 0;
 }
 
+
+
+
+/*
+void test() { 
+	
+	Py_Initialize();
+	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *currentDirectory = PyString_FromString( "." );
+	PyList_Append( path, currentDirectory );
+	
+	PyObject *mod1 = PyString_FromString( "t" );
+	PyObject *tufInterMod = PyImport_Import( mod1 );
+	if ( tufInterMod == NULL ) {
+		PyErr_Print();
+		//return false;
+		return;
+	}
+	
+	PyObject *test = PyObject_GetAttrString( tufInterMod, "f" );
+	if ( test == NULL ) {
+		PyErr_Print();
+		return; 
+	}
+	
+	PyObject *error = PyObject_CallFunction( test, NULL );
+	if ( error == NULL ) {
+		PyErr_Print();
+		return;
+	}
+	
+	test = PyObject_GetAttrString( tufInterMod, "k" );
+	if ( test == NULL ) {
+		PyErr_Print();
+		return; 
+	}
+	
+	error = PyObject_CallFunction( test, NULL );
+	if ( error == NULL ) {
+		PyErr_Print();
+		return;
+	}
+	
+	printf("\n");
+}
+
+void test2() {
+	Py_Initialize();
+	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *currentDirectory = PyString_FromString( "." );
+	PyList_Append( path, currentDirectory );
+	
+	PyObject *mod1 = PyString_FromString( "t" );
+	PyObject *tufInterMod = PyImport_Import( mod1 );
+	if ( tufInterMod == NULL ) {
+		PyErr_Print();
+		//return false;
+		return;
+	}
+	
+	PyObject *test = PyObject_GetAttrString( tufInterMod, "f" );
+	if ( test == NULL ) {
+		PyErr_Print();
+		return; 
+	}
+	
+	PyObject *error = PyObject_CallFunction( test, NULL );
+	if ( error == NULL ) {
+		PyErr_Print();
+		return;
+	}
+	
+	test = PyObject_GetAttrString( tufInterMod, "k" );
+	if ( test == NULL ) {
+		PyErr_Print();
+		return; 
+	}
+}
+*/
 
