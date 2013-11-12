@@ -34,6 +34,7 @@
 PyObject *ptr;
 PyObject *configDict;
 PyObject *py_url = NULL;
+//char* resp[j];
 
 
 
@@ -164,7 +165,7 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 */
 //bool Py_TUF_urllib_urlopen(char* url) {
 //PyObject* Py_TUF_urllib_urlopen(char* url) {
-char* Py_TUF_urllib_urlopen(char* url) {
+PyObject* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
@@ -203,6 +204,16 @@ char* Py_TUF_urllib_urlopen(char* url) {
 		return NULL;
 	}
 
+	/* Get's the generic len function */
+	/*
+	PyObject *py_len = PyObject_GetAttrString( urllibMod, "len" );
+	if ( py_len == NULL ) {
+		PyErr_Print();
+		//return false;
+		return NULL;
+	}
+	*/
+
 	/* Convert arguements into Python types and create tuple for CallObject function */
 	PyObject *args = PyTuple_New( 1 );
     PyObject *arg0 = PyString_FromString( url );
@@ -223,6 +234,8 @@ char* Py_TUF_urllib_urlopen(char* url) {
 		return NULL;
 	} 
 
+	 
+
 	/* Build a temporary tuple that we can call read() with */
 	PyObject* targs = PyTuple_New(0);
 	PyObject* http_resp = PyObject_CallObject(py_obj, targs);
@@ -231,13 +244,30 @@ char* Py_TUF_urllib_urlopen(char* url) {
     	return NULL;
     }
 
-	//resp = PyString_AsString(http_resp);
-	resp = PyString_AS_STRING(http_resp);
+
+    //int j = PyString_Size(http_resp);
+    //printf("Response was %d long\n", j);
+    /* Print out the data we got back */
+	//PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
+	//printf("\n");
+
+
+
+    //PyTuple_SetItem(args, 0, http_resp);
+    //PyObject* len = PyObject_CallObject(py_len, args);
+
+
+	//char* resp[j];
+	resp = PyString_AsString(http_resp);
+	//resp = PyString_AsStringAndSize(http_resp, resp, j);
     
 
     /* Print out the data we got back */
-	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	//printf("\n");
+    printf("\nPrinting py_url\n");
+	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	printf("\nPrinting http_resp\n");
+	PyObject_Print(http_resp, stdout, Py_PRINT_RAW);
+	printf("\n");
 	/*
     if(py_url == NULL){
     	PyErr_Print();
@@ -252,8 +282,8 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	//Py_XDECREF( args );
 	//Py_XDECREF( mod1 );
 	//Py_XDECREF( mod2 );
-	printf("test\n");
-	return resp;
+	//return resp;
+	return http_resp;
 	//return py_url;
 }
 
@@ -331,8 +361,13 @@ bool Py_TUF_urllib2_urlopen(char* url) {
     
 
     /* Print out the data we got back */
-	//PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	//printf("\n");
+    /*
+    printf("\nPrinting py_url\n");
+	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	printf("\nPrinting http_resp\n");
+	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
+	printf("\n");
+	*/
 	/*
     if(py_url == NULL){
     	PyErr_Print();
@@ -444,7 +479,8 @@ int main(int argc, char* argv[]){
 
 
 	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	char* s = Py_TUF_urllib_urlopen("http://www.google.com");
+	//char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
+	PyObject* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
 
 /*
 	if( s == NULL ){
@@ -454,8 +490,8 @@ int main(int argc, char* argv[]){
 		printf("%s\n", s);
 	}
 	* */
-	hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
-    hello = Py_TUF_urllib2_urlopen("http://www.google.com");
+	//hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
+    //hello = Py_TUF_urllib2_urlopen("http://www.google.com");
 
     return 0;
 }
