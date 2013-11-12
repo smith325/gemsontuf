@@ -47,15 +47,18 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 //PyObject* Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir){
     // Init the python env
     Py_Initialize();
+    char* path = "path";
+    char* tuf_mod_name = "tuf.interposition";
+    char* tuf_method_name = "configure";
 
 	//add the current directory to the places to search for TUF
-	PyObject *path = PySys_GetObject( (char *)"path" );
+	PyObject *path = PySys_GetObject( path );
 	PyObject *currentDirectory = PyString_FromString( "." );
 	PyList_Append( path, currentDirectory );
 	Py_XDECREF( currentDirectory );
 
 	//import TUF module
-	PyObject *moduleName = PyString_FromString( "tuf.interposition" );
+	PyObject *moduleName = PyString_FromString( tuf_mod_name );
 	PyObject *tufInterMod = PyImport_Import( moduleName );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
@@ -64,7 +67,7 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 	Py_XDECREF( moduleName );
 	
 	//get the configure function from tuf.interposition
-	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, "configure" );
+	PyObject *configFunction = PyObject_GetAttrString( tufInterMod, tuf_method_name );
 	if ( configFunction == NULL ) {
 		PyErr_Print();
 		return false;
@@ -96,10 +99,8 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 		return false;
 	}
 
-
 	printf( "TUF configured.\n" );
 	return true;
-	//return configDict;
 }
 
 
