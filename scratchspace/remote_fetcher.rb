@@ -244,7 +244,8 @@ class Gem::RemoteFetcher
   
   # Expected to return the body of an HTTP response.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
-    TUFopenURL(uri, last_modified)
+    url = uri.to_s
+    TUFurlOpen(url)
   end
   
   alias :fetch_https :fetch_http
