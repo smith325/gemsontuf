@@ -22,7 +22,7 @@
 VALUE GemsOnTuf = Qnil;
 VALUE TUF = Qnil;
 
-void Init_GemsOntuf();
+void Init_GemsOnTuf();
 
 //declare methods
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 );
