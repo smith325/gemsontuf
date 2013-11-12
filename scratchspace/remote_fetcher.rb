@@ -3,7 +3,7 @@ require 'rubygems/request'
 require 'rubygems/uri_formatter'
 require 'rubygems/user_interaction'
 require 'resolv'
-require 'GemsOnTuf'
+require '/home/panhchan/workspace/Assignment3/gemsontuf/GemsOnTuf'
 
 ##
 # RemoteFetcher handles the details of fetching gems and gem information from
@@ -245,7 +245,8 @@ class Gem::RemoteFetcher
   # Expected to return the body of an HTTP response.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
     url = uri.to_s
-    TUFurlOpen(url)
+    tuf = GemsOnTuf::TUF.new(filename="/path/to/tuf.interposition.json","./","./")
+    tuf.urlOpen(url)
   end
   
   alias :fetch_https :fetch_http
