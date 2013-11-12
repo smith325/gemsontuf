@@ -30,6 +30,6 @@ setup:
 
 clean:
 	rm -rf rubygems
-	rm -f tuf.log GemsOnTuf.so .tmp*
+	rm -f tuf.log GemsOnTuf.so
 	rm -rf ~/.gemtuf
 
