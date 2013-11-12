@@ -12,7 +12,7 @@ rubygems:
 	git clone https://github.com/rubygems/rubygems.git
 
 bridge:
-	cd interface; ruby extconf.rb; make -s; cp GemsOnTuf.so ..; make clean; rm Makefile; cd ..
+	cd interface; ruby extconf.rb; make; cp GemsOnTuf.so ..; make clean; rm Makefile; cd ..
 
 setup:
 	@echo "Overwriting remote_fetcher.rb inside installation directory"
@@ -30,6 +30,6 @@ setup:
 
 clean:
 	rm -rf rubygems
-	rm -f tuf.log GemsOnTuf.so
+	rm -f tuf.log GemsOnTuf.so .tmp*
 	rm -rf ~/.gemtuf
 

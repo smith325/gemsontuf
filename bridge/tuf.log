@@ -1,0 +1,1004 @@
+[2013-11-12 02:34:27,643 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpBSnmMS
+[2013-11-12 02:34:27,644 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/root.txt)
+[2013-11-12 02:34:27,645 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/root.txt)
+[2013-11-12 02:34:27,645 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-12 02:34:27,645 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:27,645 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/latest_specs.4.8.gz
+[2013-11-12 02:34:27,648 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:27,657 UTC] [tuf.download] [ERROR][_download_file:765@download.py] Could not download URL: http://localhost:9294/metadata/timestamp.txt
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 745, in _download_file
+    connection = _open_connection(url)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 443, in _open_connection
+    return opener.open(request)
+  File "/usr/lib/python2.7/urllib2.py", line 406, in open
+    response = meth(req, response)
+  File "/usr/lib/python2.7/urllib2.py", line 519, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python2.7/urllib2.py", line 444, in error
+    return self._call_chain(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 378, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 527, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 500: Internal Server Error
+[2013-11-12 02:34:27,658 UTC] [tuf.client.updater] [ERROR][__get_file:1023@updater.py] Update failed from http://localhost:9294/metadata/timestamp.txt.
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/client/updater.py", line 1011, in __get_file
+    compressed_file_length)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 670, in unsafe_download
+    return _download_file(url, required_length, STRICT_REQUIRED_LENGTH=False)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 745, in _download_file
+    connection = _open_connection(url)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 443, in _open_connection
+    return opener.open(request)
+  File "/usr/lib/python2.7/urllib2.py", line 406, in open
+    response = meth(req, response)
+  File "/usr/lib/python2.7/urllib2.py", line 519, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python2.7/urllib2.py", line 444, in error
+    return self._call_chain(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 378, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 527, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 500: Internal Server Error
+[2013-11-12 02:34:27,659 UTC] [tuf.client.updater] [ERROR][__get_file:1033@updater.py] Failed to update timestamp.txt from all mirrors: {u'http://localhost:9294/metadata/timestamp.txt': HTTPError()}
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/client/updater.py", line 1011, in __get_file
+    compressed_file_length)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 670, in unsafe_download
+    return _download_file(url, required_length, STRICT_REQUIRED_LENGTH=False)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 745, in _download_file
+    connection = _open_connection(url)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/download.py", line 443, in _open_connection
+    return opener.open(request)
+  File "/usr/lib/python2.7/urllib2.py", line 406, in open
+    response = meth(req, response)
+  File "/usr/lib/python2.7/urllib2.py", line 519, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/lib/python2.7/urllib2.py", line 444, in error
+    return self._call_chain(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 378, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python2.7/urllib2.py", line 527, in http_error_default
+    raise HTTPError(req.get_full_url(), code, msg, hdrs, fp)
+HTTPError: HTTP Error 500: Internal Server Error
+[2013-11-12 02:34:47,013 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpR0BiBa
+[2013-11-12 02:34:47,013 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/root.txt)
+[2013-11-12 02:34:47,014 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/root.txt)
+[2013-11-12 02:34:47,014 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-12 02:34:47,015 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:47,015 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/latest_specs.4.8.gz
+[2013-11-12 02:34:47,017 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:47,026 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:47,026 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,026 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9997911453 seconds
+[2013-11-12 02:34:47,026 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,026 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:47,027 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:47,027 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:47,027 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:47,029 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:47,029 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:47,030 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:47,030 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1303@updater.py] Metadata 'release.txt' has changed.
+[2013-11-12 02:34:47,030 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/release.txt
+[2013-11-12 02:34:47,033 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (1089) == required_length (1089)
+[2013-11-12 02:34:47,033 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,033 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,033 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 1089/1089 bytes.
+[2013-11-12 02:34:47,033 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 1089
+[2013-11-12 02:34:47,033 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/release.txt
+[2013-11-12 02:34:47,033 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (1089) == trusted length (1089)
+[2013-11-12 02:34:47,033 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 6d840f0fa85006e9a76634e2b525b0fb3a077026e3bd6505e105ae5aed01c17c
+[2013-11-12 02:34:47,035 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/release.txt'.
+[2013-11-12 02:34:47,035 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:47,035 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:47,035 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:47,035 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1303@updater.py] Metadata 'targets.txt' has changed.
+[2013-11-12 02:34:47,035 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/targets.txt
+[2013-11-12 02:34:47,041 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (5953) == required_length (5953)
+[2013-11-12 02:34:47,042 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,042 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,042 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 5953/5953 bytes.
+[2013-11-12 02:34:47,042 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 5953
+[2013-11-12 02:34:47,042 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/targets.txt
+[2013-11-12 02:34:47,042 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (5953) == trusted length (5953)
+[2013-11-12 02:34:47,042 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: b1c4d20aeafc0147a1be2d350df61476905ead276c9e9972912e30fdaef95ff7
+[2013-11-12 02:34:47,047 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/targets.txt'.
+[2013-11-12 02:34:47,048 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1324@updater.py] Removing delegated roles of 'targets'.
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'latest_specs.4.8.gz'
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,057 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,058 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,059 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,059 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,059 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:47,059 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/latest_specs.4.8.gz
+[2013-11-12 02:34:47,063 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (230) == required_length (230)
+[2013-11-12 02:34:47,063 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,063 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,063 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 230/230 bytes.
+[2013-11-12 02:34:47,063 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 230
+[2013-11-12 02:34:47,063 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/latest_specs.4.8.gz
+[2013-11-12 02:34:47,063 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (230) == trusted length (230)
+[2013-11-12 02:34:47,063 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 1f66c249c9c1d487a50d0e61cc1254414ea4a8c643801a5a5d98596f8e4fd5bf
+[2013-11-12 02:34:47,064 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:47,064 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:47,066 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:47,066 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/latest_specs.4.8.gz
+[2013-11-12 02:34:47,066 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:47,068 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:47,068 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,068 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:47,069 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:47,069 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:47,069 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:47,070 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:47,071 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:47,071 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:47,072 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'latest_specs.4.8.gz'
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,073 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:47,074 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,560 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmplV7QU2
+[2013-11-12 02:34:59,561 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/root.txt)
+[2013-11-12 02:34:59,561 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/targets.txt)
+[2013-11-12 02:34:59,562 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/release.txt)
+[2013-11-12 02:34:59,562 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/timestamp.txt)
+[2013-11-12 02:34:59,562 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/root.txt)
+[2013-11-12 02:34:59,562 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/timestamp.txt)
+[2013-11-12 02:34:59,563 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-12 02:34:59,563 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:59,563 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/latest_specs.4.8.gz
+[2013-11-12 02:34:59,566 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,576 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:59,576 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,576 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,576 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:59,576 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:59,576 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,576 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:59,579 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:59,579 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:59,579 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:59,579 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:59,580 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,580 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'latest_specs.4.8.gz'
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,582 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,583 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,584 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,584 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,585 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/latest_specs.4.8.gz
+[2013-11-12 02:34:59,590 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (230) == required_length (230)
+[2013-11-12 02:34:59,590 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,590 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.999628067 seconds
+[2013-11-12 02:34:59,591 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,591 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 230/230 bytes.
+[2013-11-12 02:34:59,591 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 230
+[2013-11-12 02:34:59,591 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/latest_specs.4.8.gz
+[2013-11-12 02:34:59,591 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (230) == trusted length (230)
+[2013-11-12 02:34:59,592 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 1f66c249c9c1d487a50d0e61cc1254414ea4a8c643801a5a5d98596f8e4fd5bf
+[2013-11-12 02:34:59,594 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,595 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,596 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:59,596 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/latest_specs.4.8.gz
+[2013-11-12 02:34:59,596 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,603 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:59,603 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,603 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,603 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:59,603 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:59,603 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,603 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,605 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'latest_specs.4.8.gz'
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,606 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target latest_specs.4.8.gz in role targets
+[2013-11-12 02:34:59,607 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,612 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,612 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,612 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:59,612 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:34:59,612 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,615 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:59,615 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,616 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,616 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:59,616 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:59,616 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,616 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:59,618 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,619 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,620 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,621 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,621 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,621 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:34:59,623 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (252) == required_length (252)
+[2013-11-12 02:34:59,624 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,624 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,624 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 252/252 bytes.
+[2013-11-12 02:34:59,624 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 252
+[2013-11-12 02:34:59,624 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:34:59,624 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (252) == trusted length (252)
+[2013-11-12 02:34:59,624 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 361d380ff0da87f28ca72347744a78144fde1d0d0ee49f7c12e94041d089c105
+[2013-11-12 02:34:59,625 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,625 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,627 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:59,627 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:34:59,627 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,630 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:59,630 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,630 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,630 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:59,630 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:59,630 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,630 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:59,632 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:59,632 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:59,632 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:59,632 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,633 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:34:59,634 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,637 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,638 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:34:59,638 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:34:59,638 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/gems/nekgem-0.0.4.gem
+[2013-11-12 02:34:59,638 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,645 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:34:59,645 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,645 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,645 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:34:59,645 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:34:59,645 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:34:59,645 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:34:59,647 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:34:59,648 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'gems/nekgem-0.0.4.gem'
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:34:59,649 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:34:59,649 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/gems/nekgem-0.0.4.gem
+[2013-11-12 02:34:59,653 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (114688) == required_length (114688)
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999949932 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999780655 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999730587 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999592304 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.99995327 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999392033 seconds
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,654 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999241829 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999172688 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.999912262 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999063015 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999012947 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998943806 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998893738 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998834133 seconds
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:34:59,655 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 114688/114688 bytes.
+[2013-11-12 02:34:59,656 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 114688
+[2013-11-12 02:34:59,656 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/gems/nekgem-0.0.4.gem
+[2013-11-12 02:34:59,656 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (114688) == trusted length (114688)
+[2013-11-12 02:34:59,656 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: c15000515d02da8ffa4021aa973841ef38a1178627c65f05e4a99183fb26677b
+[2013-11-12 02:35:32,240 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpYzq5sb
+[2013-11-12 02:35:32,240 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/root.txt)
+[2013-11-12 02:35:32,241 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/targets.txt)
+[2013-11-12 02:35:32,242 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/release.txt)
+[2013-11-12 02:35:32,242 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/timestamp.txt)
+[2013-11-12 02:35:32,242 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/root.txt)
+[2013-11-12 02:35:32,242 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/timestamp.txt)
+[2013-11-12 02:35:32,242 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-12 02:35:32,243 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:32,243 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:35:32,245 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,253 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:32,253 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,253 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,253 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:32,253 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:32,254 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,254 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,257 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,260 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,261 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:32,261 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:35:32,264 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (252) == required_length (252)
+[2013-11-12 02:35:32,264 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,264 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,264 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 252/252 bytes.
+[2013-11-12 02:35:32,264 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 252
+[2013-11-12 02:35:32,264 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:35:32,264 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (252) == trusted length (252)
+[2013-11-12 02:35:32,264 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 361d380ff0da87f28ca72347744a78144fde1d0d0ee49f7c12e94041d089c105
+[2013-11-12 02:35:32,265 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,266 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,266 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:32,266 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:35:32,267 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,270 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:32,270 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,270 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,270 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:32,270 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:32,270 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,271 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:32,276 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,277 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,278 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,279 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,279 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,279 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:35:32,279 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:32,280 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,280 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,281 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:32,281 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz
+[2013-11-12 02:35:32,281 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,284 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:32,284 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,284 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,284 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:32,285 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:32,285 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,285 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,287 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz'
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,288 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,289 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,290 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,290 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz in role targets
+[2013-11-12 02:35:32,290 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:32,290 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz
+[2013-11-12 02:35:32,293 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (244) == required_length (244)
+[2013-11-12 02:35:32,293 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,293 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,293 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 244/244 bytes.
+[2013-11-12 02:35:32,293 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 244
+[2013-11-12 02:35:32,293 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/quick/Marshal.4.8/nekgem-0.0.2.gemspec.rz
+[2013-11-12 02:35:32,293 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (244) == trusted length (244)
+[2013-11-12 02:35:32,293 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 8aba24981db08125539b3c3559f892615482627ad144d58869d1da974200026d
+[2013-11-12 02:35:32,298 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,299 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:32,299 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:32,299 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/gems/nekgem-0.0.2.gem
+[2013-11-12 02:35:32,299 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,303 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:32,304 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,304 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,304 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:32,304 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:32,304 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:32,304 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,307 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'gems/nekgem-0.0.2.gem'
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target gems/nekgem-0.0.2.gem in role targets
+[2013-11-12 02:35:32,308 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:32,309 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/gems/nekgem-0.0.2.gem
+[2013-11-12 02:35:32,311 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (3072) == required_length (3072)
+[2013-11-12 02:35:32,311 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,311 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:32,312 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 3072/3072 bytes.
+[2013-11-12 02:35:32,312 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 3072
+[2013-11-12 02:35:32,312 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/gems/nekgem-0.0.2.gem
+[2013-11-12 02:35:32,312 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (3072) == trusted length (3072)
+[2013-11-12 02:35:32,312 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: bcfc11f6d3e8b11ccd4b36cf6200d19e5d5fca18d8a634c68cd86e1bc086173f
+[2013-11-12 02:35:41,214 UTC] [tuf.interposition] [DEBUG][debug:28@utility.py] Created temporary directory at /tmp/tmpWfcmGr
+[2013-11-12 02:35:41,214 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/root.txt)
+[2013-11-12 02:35:41,214 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/targets.txt)
+[2013-11-12 02:35:41,215 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/release.txt)
+[2013-11-12 02:35:41,215 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/current/timestamp.txt)
+[2013-11-12 02:35:41,215 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/root.txt)
+[2013-11-12 02:35:41,216 UTC] [tuf.util] [DEBUG][load_json_file:575@util.py] open(/home/nek/.gemtuf/client/metadata/previous/timestamp.txt)
+[2013-11-12 02:35:41,216 UTC] [tuf.interposition] [INFO][info:38@utility.py] Updater added for Configuration(netloc=localhost:8080).
+[2013-11-12 02:35:41,216 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:41,216 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:35:41,219 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,227 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:41,227 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,227 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,227 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:41,227 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:41,227 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,227 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,231 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,233 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,234 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,235 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,235 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,235 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,235 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:41,235 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:35:41,241 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (252) == required_length (252)
+[2013-11-12 02:35:41,241 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,241 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,241 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 252/252 bytes.
+[2013-11-12 02:35:41,241 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 252
+[2013-11-12 02:35:41,241 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/specs.4.8.gz
+[2013-11-12 02:35:41,241 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (252) == trusted length (252)
+[2013-11-12 02:35:41,242 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: 361d380ff0da87f28ca72347744a78144fde1d0d0ee49f7c12e94041d089c105
+[2013-11-12 02:35:41,242 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:41,243 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:41,243 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:41,243 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/specs.4.8.gz
+[2013-11-12 02:35:41,243 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,248 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:41,248 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,248 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,249 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:41,249 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:41,249 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,249 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:41,253 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:41,253 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:41,254 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:41,254 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:41,254 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,254 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,254 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'specs.4.8.gz'
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,255 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,256 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,256 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,256 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,256 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,256 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target specs.4.8.gz in role targets
+[2013-11-12 02:35:41,257 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:41,262 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration for localhost:8080!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:41,262 UTC] [tuf.interposition] [ERROR][exception:33@utility.py] Invalid configuration in /home/nek/.gemtuf/gem_tuf.json!
+Traceback (most recent call last):
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/__init__.py", line 206, in __read_configuration
+    configuration_handler(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 254, in add
+    repository_mirror_hostnames = self.__check_configuration_on_add(configuration)
+  File "/home/nek/Desktop/TUF/tutorial/quickstart/virtualpython/local/lib/python2.7/site-packages/tuf/interposition/updater.py", line 225, in __check_configuration_on_add
+    assert configuration.hostname not in self.__updaters
+AssertionError
+[2013-11-12 02:35:41,263 UTC] [tuf.interposition] [INFO][info:38@utility.py] Found updater for hostname=localhost
+[2013-11-12 02:35:41,263 UTC] [tuf.interposition] [INFO][info:38@utility.py] Interposing for http://localhost:8080/gems/nekgem-0.0.4.gem
+[2013-11-12 02:35:41,263 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,266 UTC] [tuf.download] [WARNING][_check_content_length:589@download.py] reported_length (942) < required_length (2048)
+[2013-11-12 02:35:41,266 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,266 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,266 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 942/2048 bytes.
+[2013-11-12 02:35:41,266 UTC] [tuf.download] [WARNING][_check_downloaded_length:656@download.py] Downloaded 942 bytes, but expected 2048 bytes. There is a difference of 1106 bytes!
+[2013-11-12 02:35:41,266 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/metadata/timestamp.txt
+[2013-11-12 02:35:41,266 UTC] [tuf.client.updater] [DEBUG][__soft_check_compressed_file_length:712@updater.py] file length (942) <= trusted length (2048)
+[2013-11-12 02:35:41,269 UTC] [tuf.client.updater] [DEBUG][_update_metadata:1173@updater.py] Updated u'/home/nek/.gemtuf/client/metadata/current/timestamp.txt'.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'release' referenced in 'timestamp'.  'release' may be updated.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'release.txt' not available.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'root' referenced in 'release'.  'root' may be updated.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1253@updater.py] 'targets' referenced in 'release'.  'targets' may be updated.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_update_metadata_if_changed:1291@updater.py] Compressed version of 'targets.txt' not available.
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2244@updater.py] Asking role 'targets' about target 'gems/nekgem-0.0.4.gem'
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,270 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2251@updater.py] No target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_get_target_from_targets_role:2247@updater.py] Found target gems/nekgem-0.0.4.gem in role targets
+[2013-11-12 02:35:41,271 UTC] [tuf.client.updater] [DEBUG][_preorder_depth_first_walk:2203@updater.py] Found target in current role 'targets'
+[2013-11-12 02:35:41,271 UTC] [tuf.download] [INFO][_download_file:726@download.py] Downloading: http://localhost:9294/targets/gems/nekgem-0.0.4.gem
+[2013-11-12 02:35:41,275 UTC] [tuf.download] [DEBUG][_check_content_length:595@download.py] reported_length (114688) == required_length (114688)
+[2013-11-12 02:35:41,275 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,275 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999940395 seconds
+[2013-11-12 02:35:41,275 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,275 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.999972105 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999651909 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999451637 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999392033 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999210835 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9999041557 seconds
+[2013-11-12 02:35:41,276 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998960495 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.999890089 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998822212 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998750687 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998672009 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998602867 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][__stop_clock_and_check_speed:172@download.py] Ignoring average download speed for another: 29.9998524189 seconds
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:494@download.py] Reading next chunk...
+[2013-11-12 02:35:41,277 UTC] [tuf.download] [DEBUG][_download_fixed_amount_of_data:501@download.py] Downloaded 114688/114688 bytes.
+[2013-11-12 02:35:41,278 UTC] [tuf.download] [DEBUG][_check_downloaded_length:638@download.py] total_downloaded == required_length == 114688
+[2013-11-12 02:35:41,278 UTC] [tuf.client.updater] [DEBUG][__get_file:1017@updater.py] Not decompressing http://localhost:9294/targets/gems/nekgem-0.0.4.gem
+[2013-11-12 02:35:41,278 UTC] [tuf.client.updater] [DEBUG][__hard_check_compressed_file_length:672@updater.py] file length (114688) == trusted length (114688)
+[2013-11-12 02:35:41,279 UTC] [tuf.client.updater] [INFO][__check_hashes:632@updater.py] The file's sha256 hash is correct: c15000515d02da8ffa4021aa973841ef38a1178627c65f05e4a99183fb26677b
