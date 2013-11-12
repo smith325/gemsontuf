@@ -250,6 +250,7 @@ class Gem::RemoteFetcher
     filename = tuf.urlOpen(url)
     file = open(filename)
     file = file.read()
+    File.delete(filename)
     #print file
     file
   end
