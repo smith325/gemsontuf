@@ -13,6 +13,8 @@ class Gem::RemoteFetcher
 
   include Gem::UserInteraction
 
+  @@tuf = nil
+
   ##
   # A FetchError exception wraps up the various possible IO and HTTP failures
   # that could happen while downloading from the internet.
@@ -243,16 +245,19 @@ class Gem::RemoteFetcher
   end
   
   # Expected to return the body of an HTTP response.
+  # Redefined original fetch_http to use TUF.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
+    if @@tuf == nil 
+      @@tuf = GemsOnTuf::TUF.new("/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/tuf.interposition.json","./","./")
+    end
+    
     url = uri.to_s
-    print "Getting: " + url + "\n"
-    tuf = GemsOnTuf::TUF.new("/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/tuf.interposition.json","./","./")
-    filename = tuf.urlOpen(url)
-    file = open(filename)
-    file = file.read()
+    filename = @@tuf.urlOpen(url)
+    fileObject = open(filename)
+    fileContents = fileObject.read()
     File.delete(filename)
-    #print file
-    file
+    
+    fileContents
   end
   
   alias :fetch_https :fetch_http
