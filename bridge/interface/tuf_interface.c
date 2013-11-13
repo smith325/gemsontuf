@@ -28,13 +28,10 @@
 #include "python2.7/Python.h"
 #include <stdbool.h>
 
-//#include "tuf_interface.h"
-
-
-PyObject *ptr;
+//PyObject *ptr;
 PyObject *configDict;
-PyObject *py_url = NULL;
-char* fname = ".tmp_data_dump.raw";
+//PyObject *py_url = NULL;
+//char* fname = "tmp_data_dump.raw";
 
 
 
@@ -182,6 +179,7 @@ char* Py_TUF_urllib_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
+    char* fname = "./.tmp_data_dump.raw";
     PyObject *urllibMod;
 	PyObject *urlopenFunction;
 	PyObject *args;
@@ -251,6 +249,7 @@ char* Py_TUF_urllib2_urlopen(char* url) {
     // Init the python env
     //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
+    char* fname = "./.tmp_data_dump.raw";
     PyObject *urllibMod;
 	PyObject *urlopenFunction;
 	PyObject *args;
@@ -315,61 +314,76 @@ char* Py_TUF_urllib2_urlopen(char* url) {
 
 
 /*
-* This method calls the TUF urlretreive function, which retreives a URL through TUF.
+* This method calls the TUF urlretreive function, which retrieves a URL through TUF.
+* The value returned is the name of the locally retrieved file.
 */
 
-// NOTE: This function may not currently be working!!!
-
-//PyObject* Py_TUF_urllib_urlretrieve(char* url, char* fname) {
-bool Py_TUF_urllib_urlretrieve(char* url, char* fname) {
+char* Py_TUF_urllib_urlretrieve(char* url, char* fname) {
 	
-     // Init the python env
+    // Init the python env
+    //this Init can be removed but it doesn't do anything if it's called twice
     Py_Initialize();
     PyObject *urllibMod;
-    PyObject *urlretrieveFunction;
-    PyObject *args;
-    PyObject *arg0;
+	PyObject *urlopenFunction;
+	PyObject *args;
+	PyObject *arg0;
+	PyObject* pySocket;
+	PyObject *pySocketRead;
+	PyObject* http_resp;
 
 	/* Load the urllib_tuf module */
 	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
 		PyErr_Print();
-		return false;
+		return NULL;
 	}
 	
 	/* Get the urlopen method from the urllib_tuf class */
-	urlretrieveFunction = PyObject_GetAttrString( urllibMod, "urlretrieve" );
-	if ( urlretrieveFunction == NULL ) {
+	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlretrieve" );
+	if ( urlopenFunction == NULL ) {
 		PyErr_Print();
-		return false;
+		return NULL;
 	}
 
 	/* Convert arguements into Python types and create tuple for CallObject function */
 	args = PyTuple_New( 1 );
     arg0 = PyString_FromString( url );
     PyTuple_SetItem(args, 0, arg0);
+	
+	pySocket = PyObject_CallObject( urlopenFunction, args );
+	if(pySocket == NULL){
+		PyErr_Print();
+		//return false;
+		return NULL;
+	}
 
-    py_url = PyObject_CallObject( urlretrieveFunction, args );
+	/* Calls the socket.read() function in Python */
+	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
+	if ( pySocketRead == NULL ) {
+		PyErr_Print();
+		//return false;
+		return NULL;
+	} 
 
-	/* Print out the data we got back */
-	PyObject_Print(py_url, stdout, Py_PRINT_RAW);
-	printf("\n");
+	 
 
-    if(py_url == NULL){
+	/* Build a temporary tuple that we can call read() with */
+	args = PyTuple_New(0);
+	http_resp = PyObject_CallObject(pySocketRead, args);
+	if( http_resp == NULL ){
     	PyErr_Print();
-    	return false;
+    	return NULL;
     }
 
-	//Py_XDECREF( urlretrieveFunction );
-	//Py_XDECREF( arg0 );
-	//Py_XDECREF( args );
-	//Py_XDECREF( mod1 );
-	//Py_XDECREF( mod2 );
+    /* Dump the data out to a file */
+    FILE *fp;
+    fp = fopen(fname, "w");
+    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
+    fclose(fp);
 
-	return true;
-	//return py_url;
+    // Return the name of the file
+	return fname;
 }
-
 
 
 int main(int argc, char* argv[]){
@@ -389,21 +403,17 @@ int main(int argc, char* argv[]){
 	PyList_Append( path, currentDirectory );
 	Py_XDECREF( currentDirectory );
 	*/
-	//test();
-	//test2();
-	
 
-	//bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	//char* s = Py_TUF_urllib_urlopen("http://localhost:8000/Makefile.gz");
+	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
+	char* s = Py_TUF_urllib_urlopen("https://rubygems.org/latest_specs.4.8.gz");
 
-/*
 	if( s == NULL ){
 		printf("HTTP Response was NULL!\n");
 	}
 	else{
 		printf("%s\n", s);
 	}
-	* */
+	
 	//hello = Py_TUF_urllib_urlretrieve("http://www.google.com", "file.txt");
     //hello = Py_TUF_urllib2_urlopen("http://www.google.com");
 
