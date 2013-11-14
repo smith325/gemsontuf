@@ -222,7 +222,24 @@ char* Py_TUF_urllib_urlopen(char* url) {
     fp = fopen(fname, "w");
     PyObject_Print(http_resp, fp, Py_PRINT_RAW);
     fclose(fp);
+    /*
+    char *resp;
+    //I think this can be deleted need to test first
+    //args = PyTuple_New( 1 );
+	arg0 = http_resp;
+	PyTuple_SetItem(args, 0, arg0);
+    
+	_fileLength = PyString_Size( http_resp );
+    
+	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
+		PyErr_Print();
+		return NULL;
+	}
 
+    // Return the file
+	return resp;
+	*/
+	
     // Return the name of the file
 	return fname;
 }
@@ -288,7 +305,26 @@ char* Py_TUF_urllib2_urlopen(char* url) {
     fp = fopen(fname, "w");
     PyObject_Print(http_resp, fp, Py_PRINT_RAW);
     fclose(fp);
+    
+    
+	/*
+    char *resp;
+    //I think this can be deleted need to test first
+    //args = PyTuple_New( 1 );
+	arg0 = http_resp;
+	PyTuple_SetItem(args, 0, arg0);
+    
+	_fileLength = PyString_Size( http_resp );
+    
+	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
+		PyErr_Print();
+		return NULL;
+	}
 
+    // Return the file
+	return resp
+	*/
+	 
     // Return the name of the file
 	return fname;
 }
