@@ -53,7 +53,7 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 	char* argTwo = StringValuePtr( par1 );
 	char* argThr = StringValuePtr( par2 );
 	
-	bool worked = Py_TUF_configure( argOne, argTwo, argThr );
+	int worked = Py_TUF_configure( argOne, argTwo, argThr );
 	if ( worked )
 		return self; 
 	return Qnil;
@@ -68,18 +68,18 @@ VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
 	
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
-	return rb_str_new2( readUrl );
+	return rb_str_new( readUrl, _fileLength );
 }
 
 //bool Py_TUF_urllib2_urlopen(char* url)
 VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 	char* url = StringValuePtr( rbUrl );
 	
-	bool worked = Py_TUF_urllib2_urlopen( url );
+	char* readUrl = Py_TUF_urllib2_urlopen( url );
 	
-	if ( worked ) 
-		return Qtrue;
-	return Qfalse;
+	if ( readUrl == NULL ) 
+		return rb_str_new2( "err");
+	return rb_str_new( readUrl, _Filelength );
 }
 
 
@@ -87,12 +87,12 @@ VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl, VALUE rbFile ) {
 	char* url = StringValuePtr( rbUrl );
 	char* file = StringValuePtr( rbFile );
-	
-	bool worked = Py_TUF_urllib_urlretrieve( url, file );
+
+	char* readUrl = Py_TUF_urllib_urlretrieve( url, file );
 				  
-	if ( worked )
-		return Qtrue;
-	return Qfalse;
+	if ( readUrl == NULL )
+		return rb_str_new2( "err" );
+	return rb_str_new2( readUrl );
 }
 
 //void Py_TUFDeconfigure();

@@ -25,49 +25,65 @@
 * Best tutorial I've found thus far: http://www.linuxjournal.com/article/8497?page=0,2
 */
 
-#include "python2.7/Python.h"
-#include <stdbool.h>
+
+//#include "python2.7/Python.h"
+
+#include "tuf_interface.h"
 
 /*
  * Pointer to keep track of the TUF Python Configure object.
  * This is needed for the Deconfigure method as it's paramter
  */
 PyObject *configDict = NULL;
+int _fileLength;
 
 /*
 * Method to call TUFs configure method. This function takes the JSON interposition filename
 * as well as the parent repository directory and the parent ssl certificate directory, and
 * configures TUF to interpose on update calls
 */
-bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir) {
+int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_dir) {
     // Init the python env
     Py_Initialize();
     PyObject *moduleName;
     PyObject *tufInterMod;
     PyObject *path;
     PyObject *currentDirectory;
-    PyObject *configFunction;
-    PyObject *args;
-    PyObject *arg0;
-    PyObject *arg1;
-    PyObject *arg2;
+    //CAN BE REMOVED IF THIS WORKS
+    //PyObject *configFunction;
+    //PyObject *args;
+    //PyObject *arg0;
+    //PyObject *arg1;
+    //PyObject *arg2;
 
 	//add the current directory to the places to search for TUF
+	//Do we even need this anymore? I don't think so.
 	path = PySys_GetObject( "path" );
 	currentDirectory = PyString_FromString( "." );
 	PyList_Append( path, currentDirectory );
 	Py_XDECREF( currentDirectory );
 
-	//import TUF module
+	/* import tuf module into the interpreter ~ import tuf.interposition */
 	moduleName = PyString_FromString( "tuf.interposition" );
 	tufInterMod = PyImport_Import( moduleName );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
-		return false;
+		return 0;
 	}
 	Py_XDECREF( moduleName );
 	
+	configDict = PyObject_CallMethod( tufInterMod, (char*)"configure", "(sss)", 
+									  tuf_intrp_json, p_repo_dir, p_ssl_cert_dir );
+	if ( configDict == NULL ) {
+		PyErr_Print();
+		return 0;
+	}
+	Py_XDECREF( tufInterMod );
+	
+	//DELETE ALL THESE COMMENTS IF THIS WORKS
+	
 	//get the configure function from tuf.interposition
+	/*
 	configFunction = PyObject_GetAttrString( tufInterMod, "configure" );
 	if ( configFunction == NULL ) {
 		PyErr_Print();
@@ -89,55 +105,218 @@ bool Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_d
 	//we are currently storing this globally 	
 	configDict = PyObject_CallObject( configFunction, args );
 
-	//Py_XDECREF( arg0 );
-	//Py_XDECREF( arg1 );
-	//Py_XDECREF( arg2 );
-	//Py_XDECREF( args );
-	//Py_XDECREF( configFunction );
+	Py_XDECREF( configFunction );
+	Py_XDECREF( args );
 
 	if ( configDict == NULL ) {
 		PyErr_Print();
 		return false;
 	}
-
+	*/
 	printf( "TUF configured.\n" );
-	return true;
+	return 1;
 }
 
+
+/*
+* This method calls the TUF urlopen function, which opens a URL through TUF.
+*/
+char* Py_TUF_urllib_urlopen(char* url) {
+    char* fname = "./.tmp_data_dump.raw";
+    PyObject *urllibMod;
+	PyObject *args;
+	PyObject *http_resp;
+	PyObject *data;
+
+	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
+	urllibMod = PyImport_AddModule( "urllib_tuf" );
+	if ( urllibMod == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	
+	/* call ~ http_resp = tuf.interposition.urlopen( url ) */
+	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlopen", "(s)", url );
+	if ( http_resp == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( urllibMod );
+	
+	/* call ~ data = http_resp.read() */
+	data = PyObject_CallMethod( http_resp, (char *)"read" , NULL, NULL );
+	if ( data == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( http_resp );
+	
+    FILE *fp;
+    fp = fopen(fname, "w");
+    PyObject_Print(data, fp, Py_PRINT_RAW);
+    fclose(fp);
+    
+    //this char *resp should be moved to the top
+    /*
+    char *resp;
+    args = PyTuple_New( 1 );
+	PyTuple_SetItem(args, 0, data);
+    
+	_fileLength = PyString_Size( http_resp );
+
+	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( data );
+
+    // Return the file
+	return resp;
+	*/
+	
+	//below can be deleted if the above works
+	Py_XDECREF( data );
+	
+    // Return the name of the file
+	return fname;
+}
+
+/*
+* This method calls the TUF urlopen function from tuf.interposition.urllib2_tuf
+*/
+char* Py_TUF_urllib2_urlopen(char* url) {
+    char* fname = "./.tmp_data_dump.raw";
+    PyObject *urllibMod;
+	PyObject *args;
+	PyObject* http_resp;
+	PyObject* data;
+
+	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
+	urllibMod = PyImport_AddModule( "urllib2_tuf" );
+	if ( urllibMod == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	
+	/* call ~ http_resp = tuf.interposition.urlopen( url ) */
+	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlopen", "(s)", url );
+	if ( http_resp == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( urllibMod );
+	
+	/* call ~ data = http_resp.read() */
+	data = PyObject_CallMethod( http_resp, (char *)"read" , NULL, NULL );
+	if ( data == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( http_resp );
+    
+
+    /* Dump the data out to a file */
+    FILE *fp;
+    fp = fopen(fname, "w");
+    PyObject_Print(data, fp, Py_PRINT_RAW);
+    fclose(fp);
+    
+	/*
+	//this char* resp should be moved to the top.
+    char *resp;
+    args = PyTuple_New( 1 );
+	PyTuple_SetItem(args, 0, data);
+    
+	_fileLength = PyString_Size( data );
+    
+	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
+		PyErr_Print();
+		return NULL;
+	}
+
+    // Return the file
+	return resp;
+	*/
+	Py_XDECREF( data );
+	 
+    // Return the name of the file
+	return fname;
+}
+
+
+/*
+* This method calls the TUF urlretreive function, which retrieves a URL through TUF.
+* The value returned is the name of the locally retrieved file.
+*/
+char* Py_TUF_urllib_urlretrieve(char* url) {
+	char* fileLocation;
+	PyObject *urllibMod;
+	PyObject *args;
+	PyObject* http_resp;
+	PyObject* data;
+
+	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
+	urllibMod = PyImport_AddModule( "urllib_tuf" );
+	if ( urllibMod == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	
+	/* call ~ http_resp = tuf.interposition.urlretrieve( url ) 
+	   This returns a tuple so I decided to return the /location/filename */
+	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlretrieve", "(s)", url );
+	if ( http_resp == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	Py_XDECREF( urllibMod );
+	
+	
+	data = PyTuple_GetItem( http_resp, 0 );
+	if ( data == NULL ) {
+		PyErr_Print();
+		return NULL;
+	}
+	fileLocation = PyString_AsString( data );
+	Py_XDECREF( data );
+	
+	return fileLocation;
+}
+
+
+
+
+
+
+
+
+
+//not tested
 /*
 * Method to call TUFs configure method. This function takes the JSON interposition filename
 * as well as the parent repository directory and the parent ssl certificate directory, and
 * configures TUF to interpose on update calls
 */
-bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
+int Py_TUF_deconfigure(PyObject* tuf_config_obj) {
     // Init the python env
     Py_Initialize();
 	PyObject *path;
 	PyObject *currentDirectory;
-	PyObject *moduleName;
 	PyObject *tufInterMod;
 	PyObject *configFunction;
 
-	//add the current directory to the places to search for TUF
-	path = PySys_GetObject( (char *)"path" );
-	currentDirectory = PyString_FromString( "." );
-	PyList_Append( path, currentDirectory );
-	Py_XDECREF( currentDirectory );
-
 	//import TUF module
-	moduleName = PyString_FromString( "tuf.interposition" );
-	tufInterMod = PyImport_Import( moduleName );
+	tufInterMod = PyImport_AddModule( "tuf.interposition" );
 	if ( tufInterMod == NULL ) {
 		PyErr_Print();
-		return false;
+		return 0;
 	}
-	Py_XDECREF( moduleName );
 	
 	//get the configure function from tuf.interposition
 	configFunction = PyObject_GetAttrString( tufInterMod, "deconfigure" );
 	if ( configFunction == NULL ) {
 		PyErr_Print();
-		return false;
+		return 0;
 	}
 	Py_XDECREF( tufInterMod );
 
@@ -154,264 +333,9 @@ bool Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 
 	if ( configDict == NULL ) {
 		PyErr_Print();
-		return false;
+		return 0;
 	}
 
 	printf( "TUF deconfigured.\n" );
-	return true;
+	return 1;
 }
-
-/*
-* This method calls the TUF urlopen function, which opens a URL through TUF.
-*/
-char* Py_TUF_urllib_urlopen(char* url) {
-    // Init the python env
-    //this Init can be removed but it doesn't do anything if it's called twice
-    Py_Initialize();
-    char* fname = "./.tmp_data_dump.raw";
-    PyObject *urllibMod;
-	PyObject *urlopenFunction;
-	PyObject *args;
-	PyObject *arg0;
-	PyObject* pySocket;
-	PyObject *pySocketRead;
-	PyObject* http_resp;
-
-	/* Load the urllib_tuf module */
-	urllibMod = PyImport_AddModule( "urllib_tuf" );
-	if ( urllibMod == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-	
-	/* Get the urlopen method from the urllib_tuf class */
-	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
-	if ( urlopenFunction == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Convert arguements into Python types and create tuple for CallObject function */
-	args = PyTuple_New( 1 );
-    arg0 = PyString_FromString( url );
-    PyTuple_SetItem(args, 0, arg0);
-	
-	pySocket = PyObject_CallObject( urlopenFunction, args );
-	if(pySocket == NULL){
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Calls the socket.read() function in Python */
-	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
-	if ( pySocketRead == NULL ) {
-		PyErr_Print();
-		return NULL;
-	} 
-
-	/* Build a temporary tuple that we can call read() with */
-	args = PyTuple_New(0);
-	http_resp = PyObject_CallObject(pySocketRead, args);
-	if( http_resp == NULL ){
-    	PyErr_Print();
-    	return NULL;
-    }
-
-    /* Dump the data out to a file */
-    FILE *fp;
-    fp = fopen(fname, "w");
-    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
-    fclose(fp);
-    /*
-    char *resp;
-    //I think this can be deleted need to test first
-    //args = PyTuple_New( 1 );
-	arg0 = http_resp;
-	PyTuple_SetItem(args, 0, arg0);
-    
-	_fileLength = PyString_Size( http_resp );
-    
-	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-    // Return the file
-	return resp;
-	*/
-	
-    // Return the name of the file
-	return fname;
-}
-
-/*
-* This method calls the TUF urlopen function from tuf.interposition.urllib2_tuf
-*/
-char* Py_TUF_urllib2_urlopen(char* url) {
-    // Init the python env
-    //this Init can be removed but it doesn't do anything if it's called twice
-    Py_Initialize();
-    char* fname = "./.tmp_data_dump.raw";
-    PyObject *urllibMod;
-	PyObject *urlopenFunction;
-	PyObject *args;
-	PyObject *arg0;
-	PyObject* pySocket;
-	PyObject *pySocketRead;
-	PyObject* http_resp;
-
-	/* Load the urllib_tuf module */
-	urllibMod = PyImport_AddModule( "urllib2_tuf" );
-	if ( urllibMod == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-	
-	/* Get the urlopen method from the urllib_tuf class */
-	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlopen" );
-	if ( urlopenFunction == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Convert arguements into Python types and create tuple for CallObject function */
-	args = PyTuple_New( 1 );
-    arg0 = PyString_FromString( url );
-    PyTuple_SetItem(args, 0, arg0);
-	
-	pySocket = PyObject_CallObject( urlopenFunction, args );
-	if(pySocket == NULL){
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Calls the socket.read() function in Python */
-	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
-	if ( pySocketRead == NULL ) {
-		PyErr_Print();
-		return NULL;
-	} 	 
-
-	/* Build a temporary tuple that we can call read() with */
-	args = PyTuple_New(0);
-	http_resp = PyObject_CallObject(pySocketRead, args);
-	if( http_resp == NULL ){
-    	PyErr_Print();
-    	return NULL;
-    }
-
-    /* Dump the data out to a file */
-    FILE *fp;
-    fp = fopen(fname, "w");
-    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
-    fclose(fp);
-    
-    
-	/*
-    char *resp;
-    //I think this can be deleted need to test first
-    //args = PyTuple_New( 1 );
-	arg0 = http_resp;
-	PyTuple_SetItem(args, 0, arg0);
-    
-	_fileLength = PyString_Size( http_resp );
-    
-	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-    // Return the file
-	return resp
-	*/
-	 
-    // Return the name of the file
-	return fname;
-}
-
-
-/*
-* This method calls the TUF urlretreive function, which retrieves a URL through TUF.
-* The value returned is the name of the locally retrieved file.
-*/
-char* Py_TUF_urllib_urlretrieve(char* url, char* fname) {
-	
-    // Init the python env
-    //this Init can be removed but it doesn't do anything if it's called twice
-    Py_Initialize();
-    PyObject *urllibMod;
-	PyObject *urlopenFunction;
-	PyObject *args;
-	PyObject *arg0;
-	PyObject* pySocket;
-	PyObject *pySocketRead;
-	PyObject* http_resp;
-
-	/* Load the urllib_tuf module */
-	urllibMod = PyImport_AddModule( "urllib_tuf" );
-	if ( urllibMod == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-	
-	/* Get the urlopen method from the urllib_tuf class */
-	urlopenFunction = PyObject_GetAttrString( urllibMod, "urlretrieve" );
-	if ( urlopenFunction == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Convert arguements into Python types and create tuple for CallObject function */
-	args = PyTuple_New( 1 );
-    arg0 = PyString_FromString( url );
-    PyTuple_SetItem(args, 0, arg0);
-	
-	pySocket = PyObject_CallObject( urlopenFunction, args );
-	if(pySocket == NULL){
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Calls the socket.read() function in Python */
-	pySocketRead = PyObject_GetAttrString( pySocket, "read" );
-	if ( pySocketRead == NULL ) {
-		PyErr_Print();
-		return NULL;
-	}
-
-	/* Build a temporary tuple that we can call read() with */
-	args = PyTuple_New(0);
-	http_resp = PyObject_CallObject(pySocketRead, args);
-	if( http_resp == NULL ){
-    	PyErr_Print();
-    	return NULL;
-    }
-
-    /* Dump the data out to a file */
-    FILE *fp;
-    fp = fopen(fname, "w");
-    PyObject_Print(http_resp, fp, Py_PRINT_RAW);
-    fclose(fp);
-
-    // Return the name of the file
-	return fname;
-}
-
-
-int main(int argc, char* argv[]){
-	/* The following was used for debugging purposes only.  These functions are inteded to be called externally. -Nick Anderson 11/14/2013*/
-	/*
-	bool hello = Py_TUF_configure("tuf.interposition.json", "./", "./");
-	char* s = Py_TUF_urllib_urlopen("https://rubygems.org/latest_specs.4.8.gz");
-	if( s == NULL ){
-		printf("HTTP Response was NULL!\n");
-	}
-	else{
-		printf("%s\n", s);
-	}
-	*/
-
-    return 0;
-}
-
-
