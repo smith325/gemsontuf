@@ -68,7 +68,8 @@ VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
 	
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
-	return rb_str_new( readUrl, _fileLength );
+	return rb_str_new2( readUrl );
+	//return rb_str_new( readUrl, _fileLength );
 }
 
 //bool Py_TUF_urllib2_urlopen(char* url)
