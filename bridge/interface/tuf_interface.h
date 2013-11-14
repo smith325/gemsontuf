@@ -5,6 +5,8 @@
 #ifndef TUF_INTERFACE_H_
 #define TUF_INTERFACE_H_
 
+extern int _fileLength;
+
 /* TUF Configure function.  Takes <Path to tuf.interposition.json>, <>, <> */
 bool Py_TUF_configure(char*, char*, char*);
 /* TUF Deconfigure function.  Takes a <TUF Configure> object as it's only argument */
