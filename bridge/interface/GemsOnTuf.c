@@ -80,7 +80,8 @@ VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 	
 	if ( readUrl == NULL ) 
 		return rb_str_new2( "err");
-	return rb_str_new( readUrl, _Filelength );
+	return rb_str_new2( readUrl );
+	//return rb_str_new( readUrl, _Filelength );
 }
 
 
