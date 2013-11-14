@@ -72,6 +72,7 @@ int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 	}
 	Py_XDECREF( moduleName );
 	
+	/* python equivalent ~ tuf.interposition.configure( tuf_intrp_json, p_repo_dir, p_ssl_cert_dir ) */
 	configDict = PyObject_CallMethod( tufInterMod, (char*)"configure", "(sss)", 
 									  tuf_intrp_json, p_repo_dir, p_ssl_cert_dir );
 	if ( configDict == NULL ) {
