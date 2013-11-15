@@ -16,4 +16,4 @@ char* Py_TUF_urllib_urlretrieve(char*);
 /* urllib2_tuf urlopen() function.  Takes a URL to open and returns the data retrieved as a char* */
 char* Py_TUF_urllib2_urlopen(char*);
 
-#endif TUF_INTERFACE_H_
+#endif
