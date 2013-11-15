@@ -8,6 +8,7 @@ How to test via interactive ruby (irb):
 How to test remote_fetcher.rb:
 
 1. Compile tuf_interface.c as directed: gcc tuf_interface.c -o tuf_interface -lpython2.7
+  NOTE: After main() was removed, compile with: gcc -fPIC -c tuf_interface.c -lpython2.7
 2. Make GemsOnTuf accordingly: "ruby extconf.rb" then "make"
 3. Put all of the above files in same directory.
 4. Edit "require '/path/to/GemsOnTuf.so'" accordingly.
