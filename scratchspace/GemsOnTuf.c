@@ -31,7 +31,7 @@ VALUE method_TUFDeconfigure( VALUE self );
 
 //place holders for now
 VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl );
-VALUE method_TUFurlRetrieve( VALUE self, VALUE rbURL, VALUE rbFile );
+VALUE method_TUFurlRetrieve( VALUE self, VALUE rbURL );
 
 //init methods ~ require 'GemsOnTuf'
 void Init_GemsOnTuf() {
@@ -41,7 +41,7 @@ void Init_GemsOnTuf() {
 	rb_define_method( TUF, "deconfigure", method_TUFDeconfigure, 0 );
 	rb_define_method( TUF, "urlOpen", method_TUFurlOpen, 1 );
 	rb_define_method( TUF, "urlOpenTwo", method_TUFurlOpenTwo, 1 );
-	rb_define_method( TUF, "urlRetrieve", method_TUFurlRetrieve, 2 );
+	rb_define_method( TUF, "urlRetrieve", method_TUFurlRetrieve, 1 );
 }
 
 
@@ -49,11 +49,11 @@ void Init_GemsOnTuf() {
 //returns a bool, I think the exception from Python closes the program anyway though
 //so this might not be necessary. 
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
-	char* argOne = StringValuePtr( par0 );
-	char* argTwo = StringValuePtr( par1 );
-	char* argThr = StringValuePtr( par2 );
+	char* argOne = StringValueCStr( par0 );
+	char* argTwo = StringValueCStr( par1 );
+	char* argThr = StringValueCStr( par2 );
 	
-	bool worked = Py_TUF_configure( argOne, argTwo, argThr );
+	int worked = Py_TUF_configure( argOne, argTwo, argThr );
 	if ( worked )
 		return self; 
 	return Qnil;
@@ -62,10 +62,10 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 
 //char* Py_TUF_urllib_urlopen( char* url ) 
 VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
-	char* url = StringValuePtr( rbUrl );
-	
+	char* url = StringValueCStr( rbUrl );
+
 	char* readUrl = Py_TUF_urllib_urlopen( url );
-	
+
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
 	return rb_str_new( readUrl, _fileLength );
@@ -77,26 +77,24 @@ VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 	
 	char* readUrl = Py_TUF_urllib2_urlopen( url );
 	
-	if ( worked ) 
+	if ( readUrl == NULL ) 
 		return rb_str_new2( "err");
-	return rb_str_new( readUrl, _Filelength );
+	return rb_str_new( readUrl, _fileLength );
 }
 
 
 //bool Py_TUF_urllib_urlretrieve(char* url, char* fname);
-VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl, VALUE rbFile ) {
+VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl ) {
 	char* url = StringValuePtr( rbUrl );
-	char* file = StringValuePtr( rbFile );
-	
-	bool worked = Py_TUF_urllib_urlretrieve( url, file );
+
+	char* readUrl = Py_TUF_urllib_urlretrieve( url );
 				  
-	if ( worked )
-		return Qtrue;
-	return Qfalse;
+	if ( readUrl == NULL )
+		return rb_str_new2( "err" );
+	return rb_str_new2( readUrl );
 }
 
 //void Py_TUFDeconfigure();
-
 VALUE method_TUFDeconfigure( VALUE self ) {
 	printf( "I don't know do anything right now.\n" );
 	return Qtrue;
