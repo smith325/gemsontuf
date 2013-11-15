@@ -31,7 +31,7 @@ VALUE method_TUFDeconfigure( VALUE self );
 
 //place holders for now
 VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl );
-VALUE method_TUFurlRetrieve( VALUE self, VALUE rbURL, VALUE rbFile );
+VALUE method_TUFurlRetrieve( VALUE self, VALUE rbURL );
 
 //init methods ~ require 'GemsOnTuf'
 void Init_GemsOnTuf() {
@@ -41,7 +41,7 @@ void Init_GemsOnTuf() {
 	rb_define_method( TUF, "deconfigure", method_TUFDeconfigure, 0 );
 	rb_define_method( TUF, "urlOpen", method_TUFurlOpen, 1 );
 	rb_define_method( TUF, "urlOpenTwo", method_TUFurlOpenTwo, 1 );
-	rb_define_method( TUF, "urlRetrieve", method_TUFurlRetrieve, 2 );
+	rb_define_method( TUF, "urlRetrieve", method_TUFurlRetrieve, 1 );
 }
 
 
@@ -86,11 +86,10 @@ VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 
 
 //bool Py_TUF_urllib_urlretrieve(char* url, char* fname);
-VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl, VALUE rbFile ) {
+VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl ) {
 	char* url = StringValuePtr( rbUrl );
-	char* file = StringValuePtr( rbFile );
 
-	char* readUrl = Py_TUF_urllib_urlretrieve( url, file );
+	char* readUrl = Py_TUF_urllib_urlretrieve( url );
 				  
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
