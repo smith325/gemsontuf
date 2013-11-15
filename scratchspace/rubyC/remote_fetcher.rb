@@ -252,18 +252,12 @@ class Gem::RemoteFetcher
     end
     
     url = uri.to_s
-    print "Getting " + url + "\n"
-    # Method using char* to binary data from bridge.
-    file = @@tuf.urlOpen(url)
-    ##
-
-    # Method using temp. file on disk.
-    #filename = @@tuf.urlRetrieve(url, "./temp.temp")
-    #fileObject = open(filename)
-    #fileContents = fileObject.read()
-    #File.delete(filename)
-    #fileContents
-    ##
+    filename = @@tuf.urlOpen(url)
+    fileObject = open(filename)
+    fileContents = fileObject.read()
+    File.delete(filename)
+    
+    fileContents
   end
   
   alias :fetch_https :fetch_http
