@@ -49,9 +49,9 @@ void Init_GemsOnTuf() {
 //returns a bool, I think the exception from Python closes the program anyway though
 //so this might not be necessary. 
 VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
-	char* argOne = StringValuePtr( par0 );
-	char* argTwo = StringValuePtr( par1 );
-	char* argThr = StringValuePtr( par2 );
+	char* argOne = StringValueCStr( par0 );
+	char* argTwo = StringValueCStr( par1 );
+	char* argThr = StringValueCStr( par2 );
 	
 	int worked = Py_TUF_configure( argOne, argTwo, argThr );
 	if ( worked )
@@ -62,10 +62,10 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
 
 //char* Py_TUF_urllib_urlopen( char* url ) 
 VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
-	char* url = StringValuePtr( rbUrl );
-	
+	char* url = StringValueCStr( rbUrl );
+
 	char* readUrl = Py_TUF_urllib_urlopen( url );
-	
+
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
 	return rb_str_new2( readUrl );
