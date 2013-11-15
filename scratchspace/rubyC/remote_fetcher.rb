@@ -3,7 +3,7 @@ require 'rubygems/request'
 require 'rubygems/uri_formatter'
 require 'rubygems/user_interaction'
 require 'resolv'
-require '/home/panhchan/workspace/Assignment3/gemsontuf/bridge/interface/GemsOnTuf.so'
+require '/home/panhchan/workspace/Assignment3/gemsontuf/scratchspace/scratchscratch/GemsOnTuf.so'
 
 ##
 # RemoteFetcher handles the details of fetching gems and gem information from
@@ -252,7 +252,18 @@ class Gem::RemoteFetcher
     end
     
     url = uri.to_s
+    print "Getting " + url + "\n"
+    # Method using char* to binary data from bridge.
     file = @@tuf.urlOpen(url)
+    ##
+
+    # Method using temp. file on disk.
+    #filename = @@tuf.urlRetrieve(url, "./temp.temp")
+    #fileObject = open(filename)
+    #fileContents = fileObject.read()
+    #File.delete(filename)
+    #fileContents
+    ##
   end
   
   alias :fetch_https :fetch_http
