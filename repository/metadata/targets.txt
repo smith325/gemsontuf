@@ -3,12 +3,12 @@
   {
    "keyid": "a48adfc56133e328957ecbe2511b726573cfc02091dc534357f4a436b3da7cc7", 
    "method": "PyCrypto-PKCS#1 PSS", 
-   "sig": "7f65d50b73a83b1d7c8278cfb9e3802445fd3cef9c507cef821f9c04fabcdb6a2dad62eee3fdedc0a7b06eada8b94dcf2da378381d74c6f68115f1f6a177fea95972d1490949340f1b446ea7d1c5a770e0cf2f9f64e7b39fcf7328b871197cd851a29cf19b050f7ef47cd66fb346a0eebff756b83b7064bccb6061d7a2f6ca5e5cb1b041945a846f6282e9519ffb4f390cc2a5418c307c2706b8b8852b798420703175cfee2cec18c195bee33612f5a1b122ef2e2e5ceae2f57218ee0cea468fe84d964290faab7072e70bbc427ad1161b141c49047970587147ad573f8162744b26d09c36dae84657ffdc56bce97e06d0f51d1642a61a804ccb56136b2907e0"
+   "sig": "4d5d5dded4bbbe6c03d7b6dc8ea6e899d236f1d8cf2fea11797dd67b87887435cb82000f2e8f624358b73dd22c51b7f9fc6be6afa1ac2ad59d45ec5b460019ed2ca557fb0dabb199741df2ca8f316e69a0b473f0fa94da18a6b940a49efa0ee467c6228ed808141f4f725468d9a231b1f097ef3e5973385ddd2d146a306c3254ff57066899a47dae974c473db4243a07078827957a05c597889a386fc8601d32a4e3dfac23c385edeafbfac5175ba7bcfe49f467eadeae82bb0888083ffc2aad9b391eaaa6a94dfd0fdeec667c32ab0a8507ae84f9da03adf25114919bb23efedcb3d762c67930a167b2d95b4abe7a7c85438169f3d1476a0206261233b87bb5"
   }
  ], 
  "signed": {
   "_type": "Targets", 
-  "expires": "2013-12-26 11:59:59 UTC", 
+  "expires": "2014-12-06 11:59:59 UTC", 
   "targets": {
    "gems/arbitrary-0.0.6.gem": {
     "hashes": {
@@ -60,15 +60,15 @@
    }, 
    "latest_specs.4.8": {
     "hashes": {
-     "sha256": "3a35617dd249e92269c108a7a9ab15a0d11472c256b9e2f8592f0c6ceeeba323"
+     "sha256": "a36fb9c87423780206a772c2eabb87c61099a5c3161231c79fcb2712514bd32b"
     }, 
-    "length": 437
+    "length": 134
    }, 
    "latest_specs.4.8.gz": {
     "hashes": {
-     "sha256": "1f66c249c9c1d487a50d0e61cc1254414ea4a8c643801a5a5d98596f8e4fd5bf"
+     "sha256": "beb16721d8bb6194af28d6f535792d72517183dca8b4c829e02ed74444b29ddd"
     }, 
-    "length": 230
+    "length": 116
    }, 
    "prerelease_specs.4.8": {
     "hashes": {
@@ -78,7 +78,7 @@
    }, 
    "prerelease_specs.4.8.gz": {
     "hashes": {
-     "sha256": "6f5ec5b5acff20547f5c00dbe89f463b7f724dd3ffdee4b51c4536ed075a8085"
+     "sha256": "fac8642218e84b3ebdc43744a7cdc7f4b99d85e903f9d351e626ce8dbfce4fc7"
     }, 
     "length": 24
    }, 
@@ -87,12 +87,6 @@
      "sha256": "8363e0f3070f4419d3325e408ac8a7d5d5d097bc9a90c8f3031d6cfbde0b7cf4"
     }, 
     "length": 249
-   }, 
-   "quick/Marshal.4.8/bigdecimal-1.2.0.gemspec.rz": {
-    "hashes": {
-     "sha256": "6a123438cef2f7b267a18b7aca86f58ccd266c945111201fcaa3b9651c734884"
-    }, 
-    "length": 311
    }, 
    "quick/Marshal.4.8/important-0.0.6.gemspec.rz": {
     "hashes": {
@@ -111,24 +105,6 @@
      "sha256": "f764c5bf75e2f34992b9d402ad7ca7cff97a8bef3d7a29791e4cf69ab5f9f1ed"
     }, 
     "length": 246
-   }, 
-   "quick/Marshal.4.8/io-console-0.4.2.gemspec.rz": {
-    "hashes": {
-     "sha256": "c18bc1c9b82f074b8f4f7dbe437cdc8f58c896a13b2c2bc52b455aa35f5ede49"
-    }, 
-    "length": 271
-   }, 
-   "quick/Marshal.4.8/json-1.7.7.gemspec.rz": {
-    "hashes": {
-     "sha256": "d61b3dd38377264b6133101246839e4ef638f9b4cebd0f7d49e396d5c8b2b22a"
-    }, 
-    "length": 203
-   }, 
-   "quick/Marshal.4.8/minitest-4.3.2.gemspec.rz": {
-    "hashes": {
-     "sha256": "04b6ca22b10781680482ef966f3b89b549e8fff305bfff0beb7dc462db5f7194"
-    }, 
-    "length": 208
    }, 
    "quick/Marshal.4.8/nekgem-0.0.1.gemspec.rz": {
     "hashes": {
@@ -154,43 +130,19 @@
     }, 
     "length": 241
    }, 
-   "quick/Marshal.4.8/psych-2.0.0.gemspec.rz": {
-    "hashes": {
-     "sha256": "ff832b07d760be83c41ad4866178101328904f7bcc98ef4f4a70eac0e57dfaac"
-    }, 
-    "length": 414
-   }, 
-   "quick/Marshal.4.8/rake-0.9.6.gemspec.rz": {
-    "hashes": {
-     "sha256": "36c143d4fbdfac8722978e7d49968975b1d80637a1080fb2d3b5d7bc3b80a32a"
-    }, 
-    "length": 203
-   }, 
-   "quick/Marshal.4.8/rdoc-4.0.0.gemspec.rz": {
-    "hashes": {
-     "sha256": "ec95b07ae52cfb52e110c53175f2fd4bce10ce0d78830c132d07873cb10fbbe1"
-    }, 
-    "length": 201
-   }, 
-   "quick/Marshal.4.8/test-unit-2.0.0.0.gemspec.rz": {
-    "hashes": {
-     "sha256": "43dd82e257e81e35205e6997535e6c555cc994deb6ab008305375e27fe7df7d7"
-    }, 
-    "length": 334
-   }, 
    "specs.4.8": {
     "hashes": {
-     "sha256": "91ee3705f61c011488d17e20472946b185843d5d31c14cb2821c610c7d0ef0e1"
+     "sha256": "2d9e3f327e7e4feb58f7e52820e5d1161e6730050e275810a0873a5a4b42cc15"
     }, 
-    "length": 514
+    "length": 234
    }, 
    "specs.4.8.gz": {
     "hashes": {
-     "sha256": "361d380ff0da87f28ca72347744a78144fde1d0d0ee49f7c12e94041d089c105"
+     "sha256": "3207b32873b60e459e31a34444934a53f3ed77e2fee60051a674496e2a14f29d"
     }, 
-    "length": 252
+    "length": 142
    }
   }, 
-  "version": 1
+  "version": 2
  }
 }
