@@ -1,9 +1,23 @@
-.PHONY: all prereqs tuf rubygems bridge setup
+.PHONY: all tuf rubygems bridge setup msg env
 
-all: prereqs setup
+msg:
+	@echo "** Welcome to Gems on TUF installer **\n"
+	@echo "1) To install necessary environment type:"
+	@echo "\tmake env\n"
+	@echo "2) To download and install TUF type:"
+	@echo "\tmake tuf\n"
+	@echo "3) To download the rubygems source using git type:"
+	@echo "\tmake rubygems\n"
+	@echo "4) To compile the Ruby to TUF bridge C library type:"
+	@echo "\tmake bridge\n"
+	@echo "5) To install Gems on TUF to /tmp dir, type:"
+	@echo "\tmake setup\n"
+	@echo "Thank you for trying Gems on TUF"
 
-prereqs: tuf rubygems bridge
+all: tuf rubygems bridge setup
 
+env:
+	sudo apt-get install python python-dev curl git ruby rubygems
 
 tuf:
 	pip install tuf
@@ -17,19 +31,17 @@ bridge:
 setup:
 	@echo "Overwriting remote_fetcher.rb inside installation directory"
 	cp remote_fetcher.rb rubygems/lib/rubygems
-	sed -i.bak 's/HOME/\/home\/$(USER)/g' rubygems/lib/rubygems/remote_fetcher.rb
 	@echo "Running gem setup"
 	cd rubygems; ruby setup.rb; cd ..
-	@echo "Creating .gemtuf directory in ~/ directory"
-	mkdir -p ~/.gemtuf
-	@echo "Saving gem_tuf.json and GemsOnTuf.so inside ~/.gemtuf directory"
-	cp gem_tuf.json GemsOnTuf.so ~/.gemtuf
-	sed -i.bak 's/HOME/\/home\/$(USER)/g' ~/.gemtuf/gem_tuf.json
-	@echo "Saving ./client directory inside ~/.gemtuf directory"
-	cp -r client ~/.gemtuf
+	@echo "Creating .gemtuf directory in /tmp directory"
+	mkdir -p /tmp/.gemtuf
+	@echo "Saving gem_tuf.json and GemsOnTuf.so inside /tmp/.gemtuf directory"
+	cp gem_tuf.json GemsOnTuf.so /tmp/.gemtuf
+	@echo "Saving ./client directory inside /tmp/.gemtuf directory"
+	cp -r client /tmp/.gemtuf
 
 clean:
 	rm -rf rubygems
 	rm -f tuf.log GemsOnTuf.so
-	rm -rf ~/.gemtuf
+	rm -rf /tmp/.gemtuf
 

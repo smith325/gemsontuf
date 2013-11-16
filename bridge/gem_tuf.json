@@ -1,7 +1,7 @@
 {
   "configurations": {
     "localhost:8080": {
-      "repository_directory": "HOME/.gemtuf/client/",
+      "repository_directory": "/tmp/.gemtuf/client/",
       "repository_mirrors" : {
         "mirror1": {
           "url_prefix": "http://localhost:9294",

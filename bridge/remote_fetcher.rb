@@ -3,7 +3,7 @@ require 'rubygems/request'
 require 'rubygems/uri_formatter'
 require 'rubygems/user_interaction'
 require 'resolv'
-require 'HOME/.gemtuf/GemsOnTuf.so'
+require '/tmp/.gemtuf/GemsOnTuf.so'
 
 ##
 # RemoteFetcher handles the details of fetching gems and gem information from
@@ -248,7 +248,7 @@ class Gem::RemoteFetcher
   # Redefined original fetch_http to use TUF.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
     if @@tuf == nil 
-      @@tuf = GemsOnTuf::TUF.new("HOME/.gemtuf/gem_tuf.json","./","./")
+      @@tuf = GemsOnTuf::TUF.new("/tmp/.gemtuf/gem_tuf.json","./","./")
     end
     
     url = uri.to_s

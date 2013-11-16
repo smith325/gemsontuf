@@ -99,7 +99,7 @@ VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl ) {
 //void Py_TUFDeconfigure();
 
 VALUE method_TUFDeconfigure( VALUE self ) {
-	printf( "I don't know do anything right now.\n" );
+	printf( "I don't do anything right now.\n" );
 	return Qtrue;
 }
 
