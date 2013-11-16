@@ -1,23 +1,19 @@
-.PHONY: all tuf rubygems bridge setup msg env
+.PHONY: all tuf rubygems bridge setup msg
 
 msg:
 	@echo "** Welcome to Gems on TUF installer **\n"
-	@echo "1) To install necessary environment type:"
-	@echo "\tmake env\n"
-	@echo "2) To download and install TUF type:"
+	@echo "1) To download and install TUF type:"
 	@echo "\tmake tuf\n"
-	@echo "3) To download the rubygems source using git type:"
+	@echo "2) To download the rubygems source using git type:"
 	@echo "\tmake rubygems\n"
-	@echo "4) To compile the Ruby to TUF bridge C library type:"
+	@echo "3) To compile the Ruby to TUF bridge C library type:"
 	@echo "\tmake bridge\n"
-	@echo "5) To install Gems on TUF to /tmp dir, type:"
+	@echo "4) To install Gems on TUF to /tmp dir, type:"
 	@echo "\tmake setup\n"
 	@echo "Thank you for trying Gems on TUF"
 
 all: tuf rubygems bridge setup
 
-env:
-	sudo apt-get install python python-dev curl git ruby rubygems
 
 tuf:
 	pip install tuf
