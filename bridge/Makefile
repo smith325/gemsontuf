@@ -1,4 +1,4 @@
-.PHONY: all tuf rubygems bridge setup msg
+.PHONY: all tuf rubygems bridge setup msg local remote
 
 msg:
 	@echo "** Welcome to Gems on TUF installer **\n"
@@ -10,7 +10,11 @@ msg:
 	@echo "\tmake bridge\n"
 	@echo "4) To install Gems on TUF to /tmp dir, type:"
 	@echo "\tmake setup\n"
-	@echo "Thank you for trying Gems on TUF"
+	@echo "5) To use a local mirror instead of remote, type:"
+	@echo "\tmake local\n"
+	@echo "6) To use the remote mirror again, type:"
+	@echo "\tmake remote\n"
+	@echo "\nThank you for trying Gems on TUF"
 
 all: tuf rubygems bridge setup
 
@@ -32,9 +36,16 @@ setup:
 	@echo "Creating .gemtuf directory in /tmp directory"
 	mkdir -p /tmp/.gemtuf
 	@echo "Saving gem_tuf.json and GemsOnTuf.so inside /tmp/.gemtuf directory"
-	cp gem_tuf.json GemsOnTuf.so /tmp/.gemtuf
+	cp mirror.json /tmp/.gemtuf/gem_tuf.json
+	cp GemsOnTuf.so /tmp/.gemtuf
 	@echo "Saving ./client directory inside /tmp/.gemtuf directory"
 	cp -r client /tmp/.gemtuf
+
+local:
+	cp local.json /tmp/.gemtuf/gem_tuf.json
+
+remote:
+	cp mirror.json /tmp/.gemtuf/gem_tuf.json
 
 clean:
 	rm -rf rubygems

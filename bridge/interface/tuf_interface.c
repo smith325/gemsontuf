@@ -72,7 +72,7 @@ int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 	}
 	Py_XDECREF( tufInterMod );
 	
-	printf( "TUF configured.\n" );
+	printf( "**Protected by TUF**\n" );
 	return 1;
 }
 
@@ -278,6 +278,6 @@ int Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 		return 0;
 	}
 
-	printf( "Protected by TUF.\n" );
+	printf( "TUF deconfigured.\n" );
 	return 1;
 }
