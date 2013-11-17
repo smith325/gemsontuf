@@ -3,7 +3,7 @@ import os
 
 #key generate, they're all the same
 generate_and_write_rsa_keypair("root_key", bits=2048, password="password")
-generate_and_write_rsa_keypair("targets_key", bits=2048 password="password")
+generate_and_write_rsa_keypair("targets_key", bits=2048, password="password")
 generate_and_write_rsa_keypair("release_key", bits=2048, password="password")
 generate_and_write_rsa_keypair("timestamp_key", bits=2048, password="password")
 
