@@ -33,6 +33,8 @@ repository.timestamp.expiration = "2014-10-28 12:08:00"
 
 #creates a symlink to the repository and then creates the target metadata 
 #adds targets metadata
+#use an asbolute path apparently Ubuntu doesn't like this so if you get an error like
+#not a file ../test/test/test/test/etc this is why
 os.symlink("../../repository/targets", "./repository/targets/test")
 targetFiles = repository.get_filepaths_in_directory("./repository/targets/test",
                                                         recursive_walk=True, followlinks=True)
