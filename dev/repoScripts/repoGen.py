@@ -1,13 +1,15 @@
 from tuf.libtuf import *
 import os
 
-#key generate, they're all the same
+#key generate, they're all the same kind of
+prints "Generating keys"
 generate_and_write_rsa_keypair("root_key", bits=2048, password="password")
 generate_and_write_rsa_keypair("targets_key", bits=2048, password="password")
 generate_and_write_rsa_keypair("release_key", bits=2048, password="password")
 generate_and_write_rsa_keypair("timestamp_key", bits=2048, password="password")
 
 #public key import
+prints "Importing keys"
 publicRoot = import_rsa_publickey_from_file("root_key.pub")
 publicTarget = import_rsa_publickey_from_file("targets_key.pub")
 publicRelease = import_rsa_publickey_from_file("release_key.pub")
@@ -20,6 +22,7 @@ privateRelease = import_rsa_privatekey_from_file("release_key", password="passwo
 privateTime = import_rsa_privatekey_from_file("timestamp_key", password="password")
 
 #create new repository directory
+prints "Building repository"
 repository = create_new_repository("repository")
 
 #adds public keys to directory
@@ -35,6 +38,7 @@ repository.timestamp.expiration = "2014-10-28 12:08:00"
 #adds targets metadata
 #use an asbolute path apparently Ubuntu doesn't like this so if you get an error like
 #not a file ../test/test/test/test/etc this is why
+print "Building targets file"
 os.symlink("../../repository/targets", "./repository/targets/test")
 targetFiles = repository.get_filepaths_in_directory("./repository/targets/test",
                                                         recursive_walk=True, followlinks=True)
@@ -51,6 +55,7 @@ repository.timestamp.load_signing_key(privateTime)
 repository.status()
 
 #tries to create repository 
+print "Writing repository directory"
 try:
   repository.write()
 except tuf.Error, e:
