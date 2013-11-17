@@ -252,11 +252,7 @@ class Gem::RemoteFetcher
     end
     
     url = uri.to_s
-    filename = @@tuf.urlOpen(url)
-    fileObject = open(filename)
-    fileContents = fileObject.read()
-    File.delete(filename)
-    fileContents
+    file = @@tuf.urlOpen(url)
   end
   
   alias :fetch_https :fetch_http
