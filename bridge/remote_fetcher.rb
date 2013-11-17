@@ -253,6 +253,10 @@ class Gem::RemoteFetcher
     
     url = uri.to_s
     file = @@tuf.urlOpen(url)
+    if file == false
+      abort()
+    end
+    file
   end
   
   alias :fetch_https :fetch_http
