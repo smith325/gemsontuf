@@ -1,6 +1,4 @@
 #include "python2.7/Python.h"
-#include <stdbool.h>
-
 
 #ifndef TUF_INTERFACE_H_
 #define TUF_INTERFACE_H_

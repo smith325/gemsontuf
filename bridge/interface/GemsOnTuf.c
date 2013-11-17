@@ -68,7 +68,8 @@ VALUE method_TUFurlOpen( VALUE self, VALUE rbUrl ) {
 
 	if ( readUrl == NULL )
 		return rb_str_new2( "err" );
-	return rb_str_new( readUrl, _fileLength );
+	return rb_str_new2( readUrl );
+	//return rb_str_new( readUrl, _fileLength );
 }
 
 //bool Py_TUF_urllib2_urlopen(char* url)
@@ -79,7 +80,8 @@ VALUE method_TUFurlOpenTwo( VALUE self, VALUE rbUrl ) {
 	
 	if ( readUrl == NULL ) 
 		return rb_str_new2( "err");
-	return rb_str_new( readUrl, _fileLength );
+	return rb_str_new2( readUrl );
+	//return rb_str_new( readUrl, _Filelength );
 }
 
 
@@ -95,8 +97,9 @@ VALUE method_TUFurlRetrieve( VALUE self, VALUE rbUrl ) {
 }
 
 //void Py_TUFDeconfigure();
+
 VALUE method_TUFDeconfigure( VALUE self ) {
-	printf( "I don't know do anything right now.\n" );
+	printf( "I don't do anything right now.\n" );
 	return Qtrue;
 }
 
