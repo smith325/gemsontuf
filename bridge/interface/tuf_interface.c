@@ -278,6 +278,6 @@ int Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 		return 0;
 	}
 
-	printf( "TUF deconfigured.\n" );
+	printf( "Protected by TUF.\n" );
 	return 1;
 }
