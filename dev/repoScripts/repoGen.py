@@ -1,4 +1,5 @@
 from tuf.libtuf import *
+import os
 
 #key generate
 generate_and_write_rsa_keypair("root_key", bits=2048, password="password")
@@ -27,15 +28,24 @@ repository.release.add_key(publicRelease)
 repository.timestamp.add_key(publicTime)
 
 
+
+repository.timestamp.expiration = "2014-10-28 12:08:00"
+
+
+#creates a symlink to the repository and then creates the target metadata
+os.symlink("/Users/akoaysigod/Desktop/gemsontuf/repository/targets", "./repository/targets/test")
+targetFiles = repository.get_filepaths_in_directory("./repository/targets/test",
+                                                        recursive_walk=True, followlinks=True)
+repository.targets.add_targets(targetFiles)
+
+
+
+
 repository.root.threshold = 1
 repository.root.load_signing_key(privateRoot)
 repository.targets.load_signing_key(privateTarget)
 repository.release.load_signing_key(privateRelease)
 repository.timestamp.load_signing_key(privateTime)
-
-repository.timestamp.expiration = "2014-10-28 12:08:00"
-
-
 
 repository.status()
 
