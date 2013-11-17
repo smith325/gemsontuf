@@ -3,7 +3,8 @@ require 'rubygems/request'
 require 'rubygems/uri_formatter'
 require 'rubygems/user_interaction'
 require 'resolv'
-require '/tmp/.gemtuf/GemsOnTuf.so'
+#require '/tmp/.gemtuf/GemsOnTuf.so'
+require '/home/panhchan/workspace/Assignment3/gemsontuf/bridge/interface/GemsOnTuf.so'
 
 ##
 # RemoteFetcher handles the details of fetching gems and gem information from
@@ -248,15 +249,16 @@ class Gem::RemoteFetcher
   # Redefined original fetch_http to use TUF.
   def fetch_http uri, last_modified = nil, head = false, depth = 0
     if @@tuf == nil 
-      @@tuf = GemsOnTuf::TUF.new("/tmp/.gemtuf/gem_tuf.json","./","./")
+      @@tuf = GemsOnTuf::TUF.new("/home/panhchan/workspace/Assignment3/gemsontuf/bridge/testconfig.json","./","./")
     end
     
     url = uri.to_s
-    filename = @@tuf.urlOpen(url)
-    fileObject = open(filename)
-    fileContents = fileObject.read()
-    File.delete(filename)
-    fileContents
+    #filename = @@tuf.urlOpen(url)
+    #fileObject = open(filename)
+    #fileContents = fileObject.read()
+    #File.delete(filename)
+    #fileContents
+    file = @@tuf.urlOpen(url)
   end
   
   alias :fetch_https :fetch_http
