@@ -249,6 +249,9 @@ class Gem::RemoteFetcher
   def fetch_http uri, last_modified = nil, head = false, depth = 0
     if @@tuf == nil 
       @@tuf = GemsOnTuf::TUF.new("/tmp/.gemtuf/gem_tuf.json","./","./")
+      if @@tuf.instance_variable_get("@configured") == false
+         abort()
+      end
     end
     
     url = uri.to_s

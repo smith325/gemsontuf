@@ -54,9 +54,11 @@ VALUE method_TUFConfigure( VALUE self, VALUE par0, VALUE par1, VALUE par2 ) {
     char* argThr = StringValueCStr( par2 );
     
     int worked = Py_TUF_configure( argOne, argTwo, argThr );
-    if ( worked )
-        return self; 
-    return Qnil;
+    if ( worked ) 
+        rb_iv_set( self, "@configured", Qtrue );
+    else
+        rb_iv_set( self, "@configured", Qfalse );
+    return self;
 }
 
 
