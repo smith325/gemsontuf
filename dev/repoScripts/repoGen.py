@@ -33,7 +33,7 @@ repository.timestamp.expiration = "2014-10-28 12:08:00"
 
 
 #creates a symlink to the repository and then creates the target metadata
-os.symlink("/Users/akoaysigod/Desktop/gemsontuf/repository/targets", "./repository/targets/test")
+os.symlink("../../repository/targets", "./repository/targets/test")
 targetFiles = repository.get_filepaths_in_directory("./repository/targets/test",
                                                         recursive_walk=True, followlinks=True)
 repository.targets.add_targets(targetFiles)
