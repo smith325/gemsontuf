@@ -4,8 +4,8 @@
 *
 * Nick Anderson
 * Pan Chan
-* Anthony
-* Nektarios
+* Anthony Green
+* Nektarios Tsoutsos
 *
 * This C code acts as the interface to call TUF functionality
 * from other languages. This module should sit between Python, and
@@ -35,6 +35,7 @@
  * This is needed for the Deconfigure method as it's paramter
  */
 PyObject *configDict = NULL;
+PyObject *ptype, *pvalue, *ptraceback;
 int _fileLength;
 
 /*
@@ -52,7 +53,9 @@ int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 	moduleName = PyString_FromString( "tuf.interposition" );
 	tufInterMod = PyImport_Import( moduleName );
 	if ( tufInterMod == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return 0;
 	}
 	Py_XDECREF( moduleName );
@@ -62,7 +65,9 @@ int Py_TUF_configure(char* tuf_intrp_json, char* p_repo_dir, char* p_ssl_cert_di
 	configDict = PyObject_CallMethod( tufInterMod, (char *)"configure", "(sss)", 
 									  tuf_intrp_json, p_repo_dir, p_ssl_cert_dir );
 	if ( configDict == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return 0;
 	}
 	Py_XDECREF( tufInterMod );
@@ -85,21 +90,27 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
 	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	
 	/* call ~ http_resp = tuf.interposition.urllib_tuf.urlopen( url ) */
 	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlopen", "(s)", url );
 	if ( http_resp == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	
 	/* call ~ data = http_resp.read() */
 	data = PyObject_CallMethod( http_resp, (char *)"read" , NULL );
 	if ( data == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	Py_XDECREF( http_resp );
@@ -110,7 +121,9 @@ char* Py_TUF_urllib_urlopen(char* url) {
 	_fileLength = PyString_Size( data );
 
 	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	//Py_XDECREF( data );
@@ -132,21 +145,27 @@ char* Py_TUF_urllib2_urlopen(char* url) {
 	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
 	urllibMod = PyImport_AddModule( "urllib2_tuf" );
 	if ( urllibMod == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	
 	/* call ~ http_resp = tuf.interposition.urlopen( url ) */
 	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlopen", "s", url );
 	if ( http_resp == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	
 	/* call ~ data = http_resp.read() */
 	data = PyObject_CallMethod( http_resp, (char *)"read" , NULL );
 	if ( data == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	Py_XDECREF( http_resp );
@@ -157,7 +176,9 @@ char* Py_TUF_urllib2_urlopen(char* url) {
 	_fileLength = PyString_Size( data );
     
 	if ( !PyArg_ParseTuple( args, "s#", &resp, &_fileLength ) ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	Py_XDECREF( data );
@@ -180,7 +201,9 @@ char* Py_TUF_urllib_urlretrieve(char* url) {
 	/* Load the urllib_tuf module ~ from tuf.interposition import urllib_tuf */
 	urllibMod = PyImport_AddModule( "urllib_tuf" );
 	if ( urllibMod == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	
@@ -188,13 +211,17 @@ char* Py_TUF_urllib_urlretrieve(char* url) {
 	   This returns a tuple so I decided to return the /location/filename */
 	http_resp = PyObject_CallMethod( urllibMod, (char *)"urlretrieve", "s", url );
 	if ( http_resp == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}	
 	
 	data = PyTuple_GetItem( http_resp, 0 );
 	if ( data == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return NULL;
 	}
 	fileLocation = PyString_AsString( data );
@@ -202,14 +229,6 @@ char* Py_TUF_urllib_urlretrieve(char* url) {
 	
 	return fileLocation;
 }
-
-
-
-
-
-
-
-
 
 //not tested
 /*
@@ -225,14 +244,18 @@ int Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 	//import TUF module
 	tufInterMod = PyImport_AddModule( "tuf.interposition" );
 	if ( tufInterMod == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return 0;
 	}
 	
 	//get the configure function from tuf.interposition
 	configFunction = PyObject_GetAttrString( tufInterMod, "deconfigure" );
 	if ( configFunction == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return 0;
 	}
 	Py_XDECREF( tufInterMod );
@@ -249,7 +272,9 @@ int Py_TUF_deconfigure(PyObject* tuf_config_obj) {
 	//Py_XDECREF( configFunction );
 
 	if ( configDict == NULL ) {
-		PyErr_Print();
+		PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+    PyObject_Print( pvalue, stderr, Py_PRINT_RAW);
+    printf("\n"); fflush(stderr);
 		return 0;
 	}
 
