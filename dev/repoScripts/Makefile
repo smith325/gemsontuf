@@ -1,6 +1,7 @@
 .PHONY: clean stage
 
 stage:
+	python keyGen.py
 	python repoGen.py
 
 clean:
