@@ -23,7 +23,11 @@ tuf:
 	pip install tuf
 
 rubygems:
-	git clone https://github.com/rubygems/rubygems.git
+	if test -d rubygems; then \
+	  cd rubygems && git pull; \
+	else \
+	  git clone https://github.com/rubygems/rubygems.git; \
+	fi
 
 bridge:
 	cd interface; ruby extconf.rb; make; cp GemsOnTuf.so ..; make clean; rm Makefile; cd ..
