@@ -18,32 +18,32 @@ repoPath = "/home/nek/Desktop/gemsonTUF/gemsontuf/repository/"
 
 #public key import
 print "Importing keys"
-publicRoot1 = import_rsa_publickey_from_file("root_key1.pub")
-publicRoot2 = import_rsa_publickey_from_file("root_key2.pub")
-publicRoot3 = import_rsa_publickey_from_file("root_key3.pub")
+publicRoot1 = import_rsa_publickey_from_file("keys/root_key1.pub")
+publicRoot2 = import_rsa_publickey_from_file("keys/root_key2.pub")
+publicRoot3 = import_rsa_publickey_from_file("keys/root_key3.pub")
 
-publicTargets1 = import_rsa_publickey_from_file("targets_key1.pub")
-publicTargets2 = import_rsa_publickey_from_file("targets_key2.pub")
+publicTargets1 = import_rsa_publickey_from_file("keys/targets_key1.pub")
+publicTargets2 = import_rsa_publickey_from_file("keys/targets_key2.pub")
 
-publicRelease1 = import_rsa_publickey_from_file("release_key1.pub")
-publicRelease2 = import_rsa_publickey_from_file("release_key2.pub")
+publicRelease1 = import_rsa_publickey_from_file("keys/release_key1.pub")
+publicRelease2 = import_rsa_publickey_from_file("keys/release_key2.pub")
 
-publicTimestamp1 = import_rsa_publickey_from_file("timestamp_key1.pub")
-publicTimestamp2 = import_rsa_publickey_from_file("timestamp_key2.pub")
+publicTimestamp1 = import_rsa_publickey_from_file("keys/timestamp_key1.pub")
+publicTimestamp2 = import_rsa_publickey_from_file("keys/timestamp_key2.pub")
 
 #private key import second parameter is so you don't have to type a password in
-privateRoot1 = import_rsa_privatekey_from_file("root_key1", password=secret_root_1)
-privateRoot2 = import_rsa_privatekey_from_file("root_key2", password=secret_root_2)
-privateRoot3 = import_rsa_privatekey_from_file("root_key3", password=secret_root_3)
+privateRoot1 = import_rsa_privatekey_from_file("keys/root_key1", password=secret_root_1)
+privateRoot2 = import_rsa_privatekey_from_file("keys/root_key2", password=secret_root_2)
+privateRoot3 = import_rsa_privatekey_from_file("keys/root_key3", password=secret_root_3)
 
-privateTargets1 = import_rsa_privatekey_from_file("targets_key1", password=secret_targets_1)
-privateTargets2 = import_rsa_privatekey_from_file("targets_key2", password=secret_targets_2)
+privateTargets1 = import_rsa_privatekey_from_file("keys/targets_key1", password=secret_targets_1)
+privateTargets2 = import_rsa_privatekey_from_file("keys/targets_key2", password=secret_targets_2)
 
-privateRelease1 = import_rsa_privatekey_from_file("release_key1", password=secret_release_1)
-privateRelease2 = import_rsa_privatekey_from_file("release_key2", password=secret_release_2)
+privateRelease1 = import_rsa_privatekey_from_file("keys/release_key1", password=secret_release_1)
+privateRelease2 = import_rsa_privatekey_from_file("keys/release_key2", password=secret_release_2)
 
-privateTimestamp1 = import_rsa_privatekey_from_file("timestamp_key1", password=secret_timestamp_1)
-privateTimestamp2 = import_rsa_privatekey_from_file("timestamp_key2", password=secret_timestamp_2)
+privateTimestamp1 = import_rsa_privatekey_from_file("keys/timestamp_key1", password=secret_timestamp_1)
+privateTimestamp2 = import_rsa_privatekey_from_file("keys/timestamp_key2", password=secret_timestamp_2)
 
 #create new repository directory
 print "Building repository"
